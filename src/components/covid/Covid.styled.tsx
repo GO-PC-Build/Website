@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CovidWrapper = styled.section<{ active: boolean }>`
   position: fixed;
+  z-index: 10;
 
   transition: left 0.256s ease-in-out;
 
