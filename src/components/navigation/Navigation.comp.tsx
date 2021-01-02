@@ -75,7 +75,6 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
       <ContentDarkener
         onClick={() => props.setOpen(false)}
         active={props.isOpen}
-        window={innerHeight * 0.01}
       />
     </React.Fragment>
   );

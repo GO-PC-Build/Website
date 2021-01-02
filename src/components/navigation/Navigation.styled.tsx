@@ -108,14 +108,14 @@ export const SocialsItem = styled.a`
   min-width: 60%;
 `;
 
-export const ContentDarkener = styled.div<NavigationWrapperProps>`
+export const ContentDarkener = styled.div<{active: boolean}>`
   position: fixed;
   z-index: 0;
   right: 0;
   top: 90px;
   
   background-color: #000;
-  height: calc((${(props) => props.window}px * 100) - 90px);
+  height: 100vh;
   width: 100%;
 
   transition: all 0.5s ease-in-out;
