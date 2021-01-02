@@ -5,7 +5,7 @@ export const IntroWrapper = styled.section`
   position: relative;
 
   width: 80%;
-  margin: 50px auto 0 auto;
+  margin: 60px auto 0 auto;
 
   display: grid;
   grid-gap: 50px;
