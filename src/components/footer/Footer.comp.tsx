@@ -4,6 +4,7 @@ import {
   FooterWrapper,
   LegalWrapper,
   QuickNavigationItem,
+  QuickNavigationItemLinked,
   QuickNavigationWrapper,
   SocialsIcon,
   SocialsIconWrapper,
@@ -32,15 +33,15 @@ export const Footer: React.FC = () => (
     <FooterSplitter />
     <QuickNavigationWrapper>
       {navigation.map((item, index) => (
-        <QuickNavigationItem key={index} to={item[1]}>
+        <QuickNavigationItem key={index} href={item[1]}>
           {item[0]}
         </QuickNavigationItem>
       ))}
     </QuickNavigationWrapper>
     <FooterSplitter />
     <LegalWrapper>
-      <QuickNavigationItem to="/tos">Service Voorwaarden</QuickNavigationItem>
-      <QuickNavigationItem to="/privacy">Privacybeleid</QuickNavigationItem>
+      <QuickNavigationItemLinked to="/tos">Service Voorwaarden</QuickNavigationItemLinked>
+      <QuickNavigationItemLinked to="/privacy">Privacybeleid</QuickNavigationItemLinked>
     </LegalWrapper>
     <FooterSplitter />
     <CopyrightNote>

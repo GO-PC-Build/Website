@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { link } from "fs";
 import styled from "styled-components";
 
 export const FooterWrapper = styled.footer`
@@ -52,7 +53,13 @@ export const QuickNavigationWrapper = styled.section`
   grid-gap: 10px 5px;
 `;
 
-export const QuickNavigationItem = styled(Link)`
+export const QuickNavigationItem = styled.a`
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+`;
+
+export const QuickNavigationItemLinked = styled(Link)`
   text-decoration: none;
   color: #fff;
   font-size: 24px;
