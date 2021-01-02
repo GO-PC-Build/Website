@@ -1,4 +1,5 @@
 import {
+  ContentDarkener,
   NavigationHeader,
   NavigationHeaderIcon,
   NavigationHeaderInnerWrapper,
@@ -49,7 +50,7 @@ export const Navigation: React.FC = () => {
           <NavigationHeaderIcon src={GoPcBuildIcon} alt="" />
         </NavigationHeaderInnerWrapper>
       </NavigationHeader>
-      <NavigationWrapper active={isOpen} height={innerHeight * 0.01}>
+      <NavigationWrapper active={isOpen} window={innerHeight * 0.01}>
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />
@@ -69,6 +70,11 @@ export const Navigation: React.FC = () => {
           ))}
         </NavigationInnerWrapper>
       </NavigationWrapper>
+      <ContentDarkener
+        onClick={() => setOpen(false)}
+        active={isOpen}
+        window={innerHeight * 0.01}
+      />
     </React.Fragment>
   );
 };

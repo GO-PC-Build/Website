@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const NavigationHeader = styled.header`
   background-color: #0a142c;
 
-  position: relative;
+  position: fixed;
+  z-index: 11;
   width: 100%;
   height: 90px;
   display: flex;
@@ -28,7 +29,7 @@ export const NavigationHeaderIcon = styled.img`
 
 interface NavigationWrapperProps {
   active: boolean;
-  height: number;
+  window: number;
 }
 
 export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
@@ -36,10 +37,11 @@ export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
   color: #fff;
 
   position: fixed;
+  z-index: 10;
 
   width: 80%;
   max-width: 300px;
-  height: calc((${(props) => props.height}px * 100) - 100px);
+  height: calc((${(props) => props.window}px * 100) - 100px);
   padding: 0 0 10px 0;
 
   font-family: "Roboto", sans-serif;
@@ -47,6 +49,7 @@ export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
 
   transition: left 0.256s ease-in-out;
   left: ${(props) => (props.active ? "0" : "-300px")};
+  top: 90px;
 
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -63,12 +66,13 @@ export const NavigationInnerWrapper = styled.div`
 `;
 
 export const NavigationTitle = styled.h2`
+  text-align: center;
   font-size: 30px;
 `;
 
 export const NavigationSplitter = styled.div`
   height: 3px;
-
+  
   max-width: 60%;
   width: 100%;
 
@@ -92,4 +96,19 @@ export const SocialsItem = styled.a`
   color: #fff;
 
   min-width: 60%;
+`;
+
+export const ContentDarkener = styled.div<NavigationWrapperProps>`
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  top: 90px;
+  
+  background-color: #000;
+  height: calc((${(props) => props.window}px * 100) - 90px);
+  width: 100%;
+
+  transition: all 0.5s ease-in-out;
+  opacity: ${(props) => (props.active ? "0.10" : "0")};
+  visibility: ${(props) => (props.active ? "visible" : "hidden")};
 `;
