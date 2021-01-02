@@ -46,16 +46,14 @@ export const CovidText = styled.h2`
   white-space: pre-wrap;
 `;
 
-export const CovidMessage = styled.p<{ active: boolean }>`
+export const CovidMessage = styled.p`
   display: block;
 
   grid-area: content;
   display: block;
   max-height: 217px;
   overflow: hidden;
-
-  transition: opacity 0.256s linear;
-  opacity: ${(props) => (props.active ? "1" : "0")};
+  width: calc(100vw - 47px - 27px);
 `;
 
 export const CovidSplitter = styled.div`

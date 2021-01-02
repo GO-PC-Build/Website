@@ -30,6 +30,6 @@ export const Covid: React.FC<CovidProps> = (props) => (
       <CovidText>{"C O V I D".replaceAll(" ", "\n")}</CovidText>
     </CovidPeekWrapper>
     <CovidSplitter />
-    <CovidMessage active={props.isActive}>{messages.covid}</CovidMessage>
+    <CovidMessage>{messages.covid}</CovidMessage>
   </CovidWrapper>
 );
