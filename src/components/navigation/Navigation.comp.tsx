@@ -2,6 +2,7 @@ import {
   ContentDarkener,
   NavigationHeader,
   NavigationHeaderIcon,
+  NavigationHeaderIconUrl,
   NavigationHeaderInnerWrapper,
   NavigationInnerWrapper,
   NavigationItem,
@@ -30,7 +31,11 @@ const socials = [
   ["Instagram", "https://www.instagram.com/gopcbuild/"],
 ];
 
-export const Navigation: React.FC = () => {
+interface NavigationProps {
+  setCovidIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const Navigation: React.FC<NavigationProps> = (props) => {
   const [isOpen, setOpen] = useState(false);
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
@@ -38,7 +43,7 @@ export const Navigation: React.FC = () => {
 
   return (
     <React.Fragment>
-      <NavigationHeader>
+      <NavigationHeader onClick={() => props.setCovidIsOpen(false)}>
         <NavigationHeaderInnerWrapper>
           <Divide
             color="#fff"
@@ -47,10 +52,12 @@ export const Navigation: React.FC = () => {
             size={50}
             rounded={true}
           />
-          <NavigationHeaderIcon src={GoPcBuildIcon} alt="" />
+          <NavigationHeaderIconUrl to="/">
+            <NavigationHeaderIcon src={GoPcBuildIcon} alt="" />
+          </NavigationHeaderIconUrl>
         </NavigationHeaderInnerWrapper>
       </NavigationHeader>
-      <NavigationWrapper active={isOpen} window={innerHeight * 0.01}>
+      <NavigationWrapper active={isOpen} window={innerHeight * 0.01} onClick={() => props.setCovidIsOpen(false)}>
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />

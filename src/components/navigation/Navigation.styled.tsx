@@ -27,6 +27,13 @@ export const NavigationHeaderIcon = styled.img`
   user-select: none;
 `;
 
+export const NavigationHeaderIconUrl = styled(Link)`
+  display: block;
+  
+  width: 90px;
+  height: 90px;
+`
+
 interface NavigationWrapperProps {
   active: boolean;
   window: number;
