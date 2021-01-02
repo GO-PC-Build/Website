@@ -27,10 +27,13 @@ const socials = [
   ["Twitter", "https://twitter.com/GOPCBuild"],
   ["Facebook", "https://www.facebook.com/GOPCBuild"],
   ["Instagram", "https://www.instagram.com/gopcbuild/"],
-]
+];
 
 export const Navigation: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight);
+
+  window.addEventListener("resize", () => setInnerHeight(window.innerHeight));
 
   return (
     <React.Fragment>
@@ -46,7 +49,7 @@ export const Navigation: React.FC = () => {
           <NavigationHeaderIcon src={GoPcBuildIcon} alt="" />
         </NavigationHeaderInnerWrapper>
       </NavigationHeader>
-      <NavigationWrapper active={isOpen}>
+      <NavigationWrapper active={isOpen} height={innerHeight * 0.01}>
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />

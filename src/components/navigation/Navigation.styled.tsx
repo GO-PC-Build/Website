@@ -26,7 +26,12 @@ export const NavigationHeaderIcon = styled.img`
   user-select: none;
 `;
 
-export const NavigationWrapper = styled.nav<{ active: boolean }>`
+interface NavigationWrapperProps {
+  active: boolean;
+  height: number;
+}
+
+export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
   background-color: #0a142c;
   color: #fff;
 
@@ -34,7 +39,7 @@ export const NavigationWrapper = styled.nav<{ active: boolean }>`
 
   width: 80%;
   max-width: 300px;
-  height: calc(100vh - 100px);
+  height: calc((${(props) => props.height}px * 100) - 100px);
   padding: 0 0 10px 0;
 
   font-family: "Roboto", sans-serif;
