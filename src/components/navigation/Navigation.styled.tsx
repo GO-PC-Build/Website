@@ -5,9 +5,12 @@ export const NavigationHeader = styled.header`
   background-color: #0a142c;
 
   position: fixed;
+  top: 0;
   z-index: 11;
+
   width: 100%;
   height: 90px;
+  
   display: flex;
   justify-content: center;
 `;
@@ -106,7 +109,7 @@ export const SocialsItem = styled.a`
 `;
 
 export const ContentDarkener = styled.div<NavigationWrapperProps>`
-  position: absolute;
+  position: fixed;
   z-index: 0;
   right: 0;
   top: 90px;

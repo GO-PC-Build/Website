@@ -44,6 +44,7 @@ export const InnerCardWrapper = styled.div<{odd: boolean}>`
 
   top: calc(115px / 2);
   width: calc(100% - 20px - ((115px / 3) * 2));
+  min-width: 205px;
   padding: 10px;
   height: 223px;
 `;

@@ -15,6 +15,7 @@ import React, { useState } from "react";
 
 import { Divide } from "hamburger-react";
 import GoPcBuildIcon from "../../assets/logo.png";
+import { socials } from "../../config";
 
 const navigation = [
   ["Home", "/"],
@@ -22,13 +23,6 @@ const navigation = [
   ["Reserveer", "/reserveer"],
   ["Verbinden", "/connect"],
   ["Aanmelden", "/login"],
-];
-
-const socials = [
-  ["Discord", "/discord"],
-  ["Twitter", "https://twitter.com/GOPCBuild"],
-  ["Facebook", "https://www.facebook.com/GOPCBuild"],
-  ["Instagram", "https://www.instagram.com/gopcbuild/"],
 ];
 
 interface NavigationProps {

@@ -9,7 +9,7 @@ import {
 
 import React from "react";
 import VirusIcon from "../../assets/virus.svg";
-import messages from "../../messages";
+import messages from "../../config";
 
 interface CovidProps {
   isActive: boolean;

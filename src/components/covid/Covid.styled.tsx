@@ -47,10 +47,13 @@ export const CovidText = styled.h2`
 `;
 
 export const CovidMessage = styled.p<{ active: boolean }>`
+  display: block;
+
   grid-area: content;
   display: block;
   max-height: 217px;
-  
+  overflow: hidden;
+
   transition: opacity 0.256s linear;
   opacity: ${(props) => (props.active ? "1" : "0")};
 `;

@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from "react";
 
 import { Covid } from "../components/covid/Covid.comp";
+import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
 import styled from "styled-components";
@@ -10,8 +11,8 @@ export interface DefaultLayoutProps {
 }
 
 const MainContent = styled.main`
-  position: absolute;
-  top: 90px;
+  position: relative;
+  margin: 150px 0 0 0;
 
   font-family: "Roboto", sans-serif;
 `;
@@ -19,6 +20,11 @@ const MainContent = styled.main`
 export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   const [covidIsOpen, setCovidIsOpen] = useState(false);
   const [navIsOpen, setNavIsOpen] = useState(false);
+
+  window.addEventListener("scroll", () => {
+    setNavIsOpen(false);
+    setCovidIsOpen(false);
+  });
 
   return (
     <Suspense fallback={<p>Loading</p>}>
@@ -43,6 +49,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
       >
         {props.children}
       </MainContent>
+      <Footer />
     </Suspense>
   );
 };
