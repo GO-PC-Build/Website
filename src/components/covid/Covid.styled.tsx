@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CovidWrapper = styled.section<{ active: boolean }>`
   position: fixed;
 
-  transition: left 0.5s ease-in-out;
+  transition: left 0.256s ease-in-out;
 
   top: 140px;
   left: ${(props) => (props.active ? "30px" : "calc(100vw - 35px)")};
@@ -50,7 +50,7 @@ export const CovidMessage = styled.p<{ active: boolean }>`
   display: block;
   max-height: 217px;
   
-  transition: opacity 0.25s linear;
+  transition: opacity 0.256s linear;
   opacity: ${(props) => (props.active ? "1" : "0")};
 `;
 

@@ -14,12 +14,16 @@ import messages from "../../messages";
 interface CovidProps {
   isActive: boolean;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setNav: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Covid: React.FC<CovidProps> = (props) => (
   <CovidWrapper
     active={props.isActive}
-    onClick={() => props.setIsActive(!props.isActive)}
+    onClick={() => {
+      props.setNav(false);
+      props.setIsActive(!props.isActive);
+    }}
   >
     <CovidPeekWrapper>
       <CovidIcon src={VirusIcon} alt="" />

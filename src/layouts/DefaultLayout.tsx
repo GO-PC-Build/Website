@@ -18,15 +18,31 @@ const MainContent = styled.main`
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   const [covidIsOpen, setCovidIsOpen] = useState(false);
+  const [navIsOpen, setNavIsOpen] = useState(false);
 
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Helmet>
         <title>GO-PC Build{props.title && ` | ${props.title}`}</title>
       </Helmet>
-      <Navigation setCovidIsOpen={setCovidIsOpen} />
-      <Covid isActive={covidIsOpen} setIsActive={setCovidIsOpen} />
-      <MainContent onClick={() => setCovidIsOpen(false)}>{props.children}</MainContent>
+      <Navigation
+        isOpen={navIsOpen}
+        setOpen={setNavIsOpen}
+        setCovidIsOpen={setCovidIsOpen}
+      />
+      <Covid
+        setNav={setNavIsOpen}
+        isActive={covidIsOpen}
+        setIsActive={setCovidIsOpen}
+      />
+      <MainContent
+        onClick={() => {
+          setNavIsOpen(false);
+          setCovidIsOpen(false);
+        }}
+      >
+        {props.children}
+      </MainContent>
     </Suspense>
   );
 };

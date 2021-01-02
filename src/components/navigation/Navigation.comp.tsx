@@ -33,10 +33,11 @@ const socials = [
 
 interface NavigationProps {
   setCovidIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Navigation: React.FC<NavigationProps> = (props) => {
-  const [isOpen, setOpen] = useState(false);
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
   window.addEventListener("resize", () => setInnerHeight(window.innerHeight));
@@ -47,8 +48,8 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
         <NavigationHeaderInnerWrapper>
           <Divide
             color="#fff"
-            toggled={isOpen}
-            toggle={setOpen}
+            toggled={props.isOpen}
+            toggle={props.setOpen}
             size={50}
             rounded={true}
           />
@@ -57,7 +58,7 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
           </NavigationHeaderIconUrl>
         </NavigationHeaderInnerWrapper>
       </NavigationHeader>
-      <NavigationWrapper active={isOpen} window={innerHeight * 0.01} onClick={() => props.setCovidIsOpen(false)}>
+      <NavigationWrapper active={props.isOpen} window={innerHeight * 0.01} onClick={() => props.setCovidIsOpen(false)}>
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />
@@ -78,8 +79,8 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
         </NavigationInnerWrapper>
       </NavigationWrapper>
       <ContentDarkener
-        onClick={() => setOpen(false)}
-        active={isOpen}
+        onClick={() => props.setOpen(false)}
+        active={props.isOpen}
         window={innerHeight * 0.01}
       />
     </React.Fragment>
