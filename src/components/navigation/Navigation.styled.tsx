@@ -124,6 +124,10 @@ export const NavigationItem = styled(Link)`
   color: #fff;
 
   min-width: 60%;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const SocialsItem = styled.a`
@@ -132,6 +136,10 @@ export const SocialsItem = styled.a`
   color: #fff;
 
   min-width: 60%;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const ContentDarkener = styled.div<{ active: boolean }>`
