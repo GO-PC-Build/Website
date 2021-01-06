@@ -15,9 +15,9 @@ export const FooterWrapper = styled.footer`
   display: grid;
   width: calc(100% - 80px);
   grid-gap: 20px;
-    
+
   @media (min-width: 1024px) {
-    width: calc(100% - 300px);
+    width: calc(100% - 380px);
     margin-left: 300px;
   }
 `;

@@ -87,7 +87,8 @@ export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
     top: 150px;
     left: 0;
     width: 300px;
-    height: calc((${(props) => props.window}px * 100) - 160px);
+    height: calc((${(props) => props.window}px * 100) - 180px);
+    padding: 0 0 30px 0;
   }
 `;
 
