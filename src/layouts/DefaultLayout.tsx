@@ -15,6 +15,11 @@ const MainContent = styled.main`
   margin: 150px 0 0 0;
 
   font-family: "Roboto", sans-serif;
+  
+  @media (min-width: 1024px) {
+    width: calc(100% - 300px);
+    margin-left: 300px;
+  }
 `;
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {

@@ -1,5 +1,6 @@
 import {
   ContentDarkener,
+  HamburgerWrapper,
   NavigationHeader,
   NavigationHeaderIcon,
   NavigationHeaderIconUrl,
@@ -13,9 +14,9 @@ import {
 } from "./Navigation.styled";
 import React, { useState } from "react";
 
-import { Divide } from "hamburger-react";
 import GoPcBuildIcon from "../../assets/logo.png";
 import { socials } from "../../config";
+import { Divide } from "hamburger-react";
 
 const navigation = [
   ["Home", "/"],
@@ -40,19 +41,25 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
     <React.Fragment>
       <NavigationHeader onClick={() => props.setCovidIsOpen(false)}>
         <NavigationHeaderInnerWrapper>
-          <Divide
-            color="#fff"
-            toggled={props.isOpen}
-            toggle={props.setOpen}
-            size={50}
-            rounded={true}
-          />
+          <HamburgerWrapper>
+            <Divide
+              color="#fff"
+              toggled={props.isOpen}
+              toggle={props.setOpen}
+              size={50}
+              rounded={true}
+            />
+          </HamburgerWrapper>
           <NavigationHeaderIconUrl to="/">
             <NavigationHeaderIcon src={GoPcBuildIcon} alt="" />
           </NavigationHeaderIconUrl>
         </NavigationHeaderInnerWrapper>
       </NavigationHeader>
-      <NavigationWrapper active={props.isOpen} window={innerHeight * 0.01} onClick={() => props.setCovidIsOpen(false)}>
+      <NavigationWrapper
+        active={props.isOpen}
+        window={innerHeight * 0.01}
+        onClick={() => props.setCovidIsOpen(false)}
+      >
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />

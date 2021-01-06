@@ -10,9 +10,14 @@ export const NavigationHeader = styled.header`
 
   width: 100%;
   height: 90px;
-  
+
   display: flex;
   justify-content: center;
+
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 160px;
+  }
 `;
 
 export const NavigationHeaderInnerWrapper = styled.div`
@@ -21,6 +26,10 @@ export const NavigationHeaderInnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    justify-content: center;
+  }
 `;
 
 export const NavigationHeaderIcon = styled.img`
@@ -28,14 +37,24 @@ export const NavigationHeaderIcon = styled.img`
   height: 90px;
 
   user-select: none;
+
+  @media (min-width: 1024px) {
+    width: 142px;
+    height: 142px;
+  }
 `;
 
 export const NavigationHeaderIconUrl = styled(Link)`
   display: block;
-  
+
   width: 90px;
   height: 90px;
-`
+
+  @media (min-width: 1024px) {
+    width: 142px;
+    height: 142px;
+  }
+`;
 
 interface NavigationWrapperProps {
   active: boolean;
@@ -63,6 +82,13 @@ export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
 
   display: grid;
   grid-template-rows: 1fr 1fr;
+
+  @media (min-width: 1024px) {
+    top: 150px;
+    left: 0;
+    width: 300px;
+    height: calc((${(props) => props.window}px * 100) - 160px);
+  }
 `;
 
 export const NavigationInnerWrapper = styled.div`
@@ -82,7 +108,7 @@ export const NavigationTitle = styled.h2`
 
 export const NavigationSplitter = styled.div`
   height: 3px;
-  
+
   max-width: 60%;
   width: 100%;
 
@@ -108,12 +134,12 @@ export const SocialsItem = styled.a`
   min-width: 60%;
 `;
 
-export const ContentDarkener = styled.div<{active: boolean}>`
+export const ContentDarkener = styled.div<{ active: boolean }>`
   position: fixed;
   z-index: 0;
   right: 0;
   top: 90px;
-  
+
   background-color: #000;
   height: 100vh;
   width: 100%;
@@ -121,4 +147,12 @@ export const ContentDarkener = styled.div<{active: boolean}>`
   transition: all 0.5s ease-in-out;
   opacity: ${(props) => (props.active ? "0.10" : "0")};
   visibility: ${(props) => (props.active ? "visible" : "hidden")};
+`;
+
+export const HamburgerWrapper = styled.div`
+  background-color: red;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `;
