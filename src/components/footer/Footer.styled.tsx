@@ -19,6 +19,8 @@ export const FooterWrapper = styled.footer`
   @media (min-width: 1024px) {
     width: calc(100% - 380px);
     margin-left: 300px;
+
+    grid-template-columns: repeat(2, 1fr auto) 1fr;
   }
 `;
 
@@ -35,6 +37,10 @@ export const SocialsIconWrapper = styled(Link)`
   height: 45px;
   width: fit-content;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    margin: auto 0;
+  }
 `;
 
 export const SocialsIcon = styled.img`
@@ -42,12 +48,18 @@ export const SocialsIcon = styled.img`
   height: 45px;
 `;
 
-export const FooterSplitter = styled.div`
+export const FooterSplitter = styled.div<{hide?: boolean}>`
   width: 100%;
   height: 3px;
 
   background-color: #4a85b9;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    width: 3px;
+    height: 100%;
+    ${(props) => props.hide === undefined ? '' : 'display: none;'}
+  }
 `;
 
 export const QuickNavigationWrapper = styled.section`
@@ -76,8 +88,18 @@ export const LegalWrapper = styled.section`
 `;
 
 export const CopyrightNote = styled.section`
-    display: flex;
-    flex-direction: column;
-    white-space: pre-wrap;
-    font-size: 16px;
-`
+  display: flex;
+  flex-direction: column;
+  white-space: pre-wrap;
+  font-size: 16px;
+
+  @media (min-width: 1024px) {
+    white-space: normal;
+    text-align: center;
+
+    grid-column-start: 1;
+    grid-column-end: 7;
+
+    width: 100%;
+  }
+`;

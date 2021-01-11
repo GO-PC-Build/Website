@@ -43,7 +43,7 @@ export const Footer: React.FC = () => (
       <QuickNavigationItemLinked to="/tos">Service Voorwaarden</QuickNavigationItemLinked>
       <QuickNavigationItemLinked to="/privacy">Privacybeleid</QuickNavigationItemLinked>
     </LegalWrapper>
-    <FooterSplitter />
+    <FooterSplitter hide={true} />
     <CopyrightNote>
       ©2020-2021 GO-PC Build{"\n"}
       Fortstraat 49, 9700 Oudenaarde

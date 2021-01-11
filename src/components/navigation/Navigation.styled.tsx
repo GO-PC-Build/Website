@@ -159,8 +159,6 @@ export const ContentDarkener = styled.div<{ active: boolean }>`
 `;
 
 export const HamburgerWrapper = styled.div`
-  background-color: red;
-
   @media (min-width: 1024px) {
     display: none;
   }
