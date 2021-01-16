@@ -9,7 +9,18 @@ export const CardsWrapper = styled.section`
 
   display: grid;
   grid-gap: 40px;
-  grid-template-rows: repeat(3, 1fr);
+
+  @media (max-width: 1024px) {
+    grid-template-rows: 1fr;
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1500px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const CardWrapper = styled(Link)`
@@ -20,23 +31,34 @@ export const CardWrapper = styled(Link)`
   color: #fff;
 
   height: 300px;
+
+  @media (min-width: 1024px) {
+    max-width: 318px;
+  }
 `;
 
-export const CardIcon = styled.img<{odd: boolean}>`
+export const CardIcon = styled.img<{ odd: boolean }>`
   position: absolute;
-  ${(props) => props.odd ? 'right: 0;' : 'left: 0;'}
+  ${(props) => (props.odd ? "right: 0;" : "left: 0;")}
   z-index: 4;
 
   width: 115px;
   height: 115px;
 
   user-select: none;
+
+  @media (min-width: 1024px) {
+    left: auto;
+    right: 0;
+
+    ${(props) => (props.odd ? "" : "transform: scaleX(-1);")}
+  }
 `;
 
-export const InnerCardWrapper = styled.div<{odd: boolean}>`
+export const InnerCardWrapper = styled.div<{ odd: boolean }>`
   position: absolute;
   z-index: 3;
-  ${(props) => props.odd ? 'left: 0;' : 'right: 0;'}
+  ${(props) => (props.odd ? "left: 0;" : "right: 0;")}
 
   background-color: #0a142c;
   border-radius: 7px;
@@ -49,13 +71,22 @@ export const InnerCardWrapper = styled.div<{odd: boolean}>`
   min-width: 205px;
   padding: 10px;
   height: 223px;
+
+  @media (min-width: 1024px) {
+    right: auto;
+    left: 0;
+  }
 `;
 
-export const CardTitle = styled.h3<{odd: boolean}>`
+export const CardTitle = styled.h3<{ odd: boolean }>`
   font-size: 36px;
   white-space: pre-wrap;
   line-height: 40px;
-  text-align: ${(props) => props.odd ? 'left' : 'right'}
+  text-align: ${(props) => (props.odd ? "left" : "right")};
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
 `;
 
 export const CardSplitter = styled.div`
