@@ -56,4 +56,8 @@ export const Reserve = styled(Link)`
   &:active {
     background-color: #4b86b9;
   }
+
+  @media (min-width: 1024px) {
+    margin: 0 0 0 40px;
+  }
 `;

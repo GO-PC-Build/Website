@@ -6,7 +6,7 @@ export const FooterWrapper = styled.footer`
   background-color: #0a142c;
   width: 100%;
 
-  margin: 60px 0 0 0;
+  margin: 0;
   padding: 40px;
 
   color: #fff;

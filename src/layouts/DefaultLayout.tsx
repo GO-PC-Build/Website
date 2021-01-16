@@ -33,12 +33,35 @@ const GlobalStyle = createGlobalStyle`
 const MainContent = styled.main`
   position: relative;
   margin: 150px 0 0 0;
+  padding: 0 0 60px 0;
 
   font-family: "Roboto", sans-serif;
 
   @media (min-width: 1024px) {
     width: calc(100% - 300px);
     margin-left: 300px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: #0A142C;
+    padding: 10px;
+
+    bottom: 0;
+    left: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+
+    border-radius: 0 0 0 14px;
+
+    bottom: 0;
+    left: 0;
   }
 `;
 

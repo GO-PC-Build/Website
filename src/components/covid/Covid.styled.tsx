@@ -67,7 +67,7 @@ export const CovidMessage = styled.p`
   cursor: text;
   
   @media (min-width: 1024px) {
-    width: calc(100vw - 47px - 27px - 300px);
+    width: calc(100vw - 47px - 27px - 317px);
   }
 `;
 
