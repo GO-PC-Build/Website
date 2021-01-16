@@ -27,6 +27,10 @@ export const Description = styled.p`
 
   font-weight: 300;
   font-size: 24px;
+
+  @media (min-width: 1024px) {
+    max-width: 60%;
+  }
 `;
 
 export const Reserve = styled(Link)`
