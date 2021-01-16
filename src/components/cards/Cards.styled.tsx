@@ -29,6 +29,8 @@ export const CardIcon = styled.img<{odd: boolean}>`
 
   width: 115px;
   height: 115px;
+
+  user-select: none;
 `;
 
 export const InnerCardWrapper = styled.div<{odd: boolean}>`

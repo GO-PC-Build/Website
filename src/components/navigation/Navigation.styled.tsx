@@ -105,6 +105,7 @@ export const NavigationInnerWrapper = styled.div`
 export const NavigationTitle = styled.h2`
   text-align: center;
   font-size: 30px;
+  user-select: none;
 `;
 
 export const NavigationSplitter = styled.div`

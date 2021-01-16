@@ -23,6 +23,12 @@ export const CovidWrapper = styled.section<{ active: boolean }>`
   grid-gap: 5px;
 
   align-items: center;
+
+  cursor: pointer;
+  
+  @media (min-width: 1024px) {
+    left: ${(props) => (props.active ? "330px" : "calc(100vw - 45px)")};
+  }
 `;
 
 export const CovidPeekWrapper = styled.div`
@@ -35,6 +41,7 @@ export const CovidPeekWrapper = styled.div`
 export const CovidIcon = styled.img`
   width: 24px;
   height: 24px;
+  user-select: none;
 `;
 
 export const CovidText = styled.h2`
@@ -44,6 +51,8 @@ export const CovidText = styled.h2`
 
   display: block;
   white-space: pre-wrap;
+
+  user-select: none;
 `;
 
 export const CovidMessage = styled.p`
@@ -54,6 +63,12 @@ export const CovidMessage = styled.p`
   max-height: 217px;
   overflow: hidden;
   width: calc(100vw - 47px - 27px);
+  
+  cursor: text;
+  
+  @media (min-width: 1024px) {
+    width: calc(100vw - 47px - 27px - 300px);
+  }
 `;
 
 export const CovidSplitter = styled.div`

@@ -46,6 +46,7 @@ export const SocialsIconWrapper = styled(Link)`
 export const SocialsIcon = styled.img`
   width: 45px;
   height: 45px;
+  user-select: none;
 `;
 
 export const FooterSplitter = styled.div<{hide?: boolean}>`

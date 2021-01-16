@@ -19,6 +19,7 @@ export const Title = styled.h1`
 
   font-weight: 500;
   font-size: 42px;
+  user-select: none;
 `;
 
 export const Description = styled.p`
@@ -44,6 +45,7 @@ export const Reserve = styled(Link)`
   font-size: 30px;
 
   text-decoration: none;
+  user-select: none;
 
   transition: background-color 0.2s ease-in-out;
 
