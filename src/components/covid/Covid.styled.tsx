@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const CovidWrapper = styled.section<{ active: boolean }>`
   position: fixed;
-  z-index: 10;
+  z-index: 11;
 
   transition: left 0.256s ease-in-out;
 
   top: 140px;
+  right: 0;
   left: ${(props) => (props.active ? "30px" : "calc(100vw - 35px)")};
 
   padding: 14px 7px;
@@ -25,9 +26,10 @@ export const CovidWrapper = styled.section<{ active: boolean }>`
   align-items: center;
 
   cursor: pointer;
-  
+
   @media (min-width: 1024px) {
-    left: ${(props) => (props.active ? "330px" : "calc(100vw - 45px)")};
+    left: ${(props) => (props.active ? "70vw" : "calc(100vw - 45px)")};
+    max-width: 30vw;
   }
 `;
 
@@ -63,11 +65,12 @@ export const CovidMessage = styled.p`
   max-height: 217px;
   overflow: hidden;
   width: calc(100vw - 47px - 27px);
-  
+
   cursor: text;
-  
+
   @media (min-width: 1024px) {
     width: calc(100vw - 47px - 27px - 317px);
+    max-width: calc(30vw - 17px - 27px - 47px);
   }
 `;
 
