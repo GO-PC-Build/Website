@@ -30,7 +30,7 @@ const data = [
   {
     title: "Verbind\nSmartschool",
     url: "/connect",
-    description: "Betaal met je epay account om corona tegen te gaan!",
+    description: "Reserveer gemakkenlijk je plek online!",
     icon: SmartschoolIcon,
   },
 ];
