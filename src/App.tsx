@@ -17,6 +17,7 @@ const Draaiboek = () => {
 }
 
 const IndexPage = lazy(() => import("./pages/index"));
+const ReservePage = lazy(() => import("./pages/reserve"));
 
 const App = () => (
   <Router>
@@ -27,6 +28,15 @@ const App = () => (
         render={() => (
           <DefaultLayout title={"Home"}>
             <IndexPage />
+          </DefaultLayout>
+        )}
+      />
+      <Route
+        exact
+        path="/reserveer"
+        render={() => (
+          <DefaultLayout title={"Reserveer"}>
+            <ReservePage />
           </DefaultLayout>
         )}
       />

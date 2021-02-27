@@ -11,6 +11,13 @@ export interface DefaultLayoutProps {
 }
 
 const GlobalStyle = createGlobalStyle`
+  #root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -34,6 +41,7 @@ const MainContent = styled.main`
   position: relative;
   margin: 150px 0 0 0;
   padding: 0 0 120px 0;
+  height: 100%;
 
   font-family: "Roboto", sans-serif;
 
@@ -45,7 +53,7 @@ const MainContent = styled.main`
   &::before {
     content: "";
     position: absolute;
-    background-color: #0A142C;
+    background-color: #0a142c;
     padding: 10px;
 
     bottom: 0;
