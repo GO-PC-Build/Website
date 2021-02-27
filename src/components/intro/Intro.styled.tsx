@@ -87,4 +87,13 @@ export const SideIcons = styled.div`
   display: flex;
   margin: auto;
   user-select: none;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    overflow: hidden;
+
+    img {
+      margin: 0 auto !important;
+    }
+  }
 `;
