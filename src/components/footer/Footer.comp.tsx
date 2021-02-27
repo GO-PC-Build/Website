@@ -2,9 +2,7 @@ import {
   CopyrightNote,
   FooterSplitter,
   FooterWrapper,
-  LegalWrapper,
   QuickNavigationItem,
-  QuickNavigationItemLinked,
   QuickNavigationWrapper,
   SocialsIcon,
   SocialsIconWrapper,
@@ -25,7 +23,7 @@ export const Footer: React.FC = () => (
   <FooterWrapper>
     <SocialsWrapper>
       {socials.map((item, index) => (
-        <SocialsIconWrapper key={index} to={item[1]}>
+        <SocialsIconWrapper key={index} href={item[1]}>
           <SocialsIcon src={item[2]} alt={item[0]} />
         </SocialsIconWrapper>
       ))}
@@ -33,16 +31,16 @@ export const Footer: React.FC = () => (
     <FooterSplitter />
     <QuickNavigationWrapper>
       {navigation.map((item, index) => (
-        <QuickNavigationItem key={index} href={item[1]}>
+        <QuickNavigationItem key={index} to={item[1]}>
           {item[0]}
         </QuickNavigationItem>
       ))}
     </QuickNavigationWrapper>
-    <FooterSplitter />
+    {/* <FooterSplitter />
     <LegalWrapper>
       <QuickNavigationItemLinked to="/tos">Service Voorwaarden</QuickNavigationItemLinked>
       <QuickNavigationItemLinked to="/privacy">Privacybeleid</QuickNavigationItemLinked>
-    </LegalWrapper>
+    </LegalWrapper> */}
     <FooterSplitter hide={true} />
     <CopyrightNote>
       ©2020-2021 GO-PC Build{"\n"}

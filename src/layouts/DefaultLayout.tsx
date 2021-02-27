@@ -1,10 +1,10 @@
 import React, { Suspense, useState } from "react";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { Covid } from "../components/covid/Covid.comp";
 import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
-import styled, { createGlobalStyle } from "styled-components";
 
 export interface DefaultLayoutProps {
   title?: string;
@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
 const MainContent = styled.main`
   position: relative;
   margin: 150px 0 0 0;
-  padding: 0 0 60px 0;
+  padding: 0 0 120px 0;
 
   font-family: "Roboto", sans-serif;
 

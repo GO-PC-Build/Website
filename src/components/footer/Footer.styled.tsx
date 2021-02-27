@@ -20,18 +20,22 @@ export const FooterWrapper = styled.footer`
     width: calc(100% - 380px);
     margin-left: 300px;
 
-    grid-template-columns: repeat(2, 1fr auto) 1fr;
+    grid-template-columns: 1fr auto 1fr;
   }
 `;
 
 export const SocialsWrapper = styled.section`
   width: 100%;
-
+  margin: 0 0 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (min-width: 1024px) {
+    max-width: 325px;
+  }
 `;
 
-export const SocialsIconWrapper = styled(Link)`
+export const SocialsIconWrapper = styled.a`
   display: block;
   text-decoration: none;
   height: 45px;
@@ -39,7 +43,7 @@ export const SocialsIconWrapper = styled(Link)`
   margin: 0 auto;
 
   @media (min-width: 1024px) {
-    margin: auto 0;
+    margin: auto;
   }
 `;
 
@@ -49,7 +53,7 @@ export const SocialsIcon = styled.img`
   user-select: none;
 `;
 
-export const FooterSplitter = styled.div<{hide?: boolean}>`
+export const FooterSplitter = styled.div<{ hide?: boolean }>`
   width: 100%;
   height: 3px;
 
@@ -59,7 +63,7 @@ export const FooterSplitter = styled.div<{hide?: boolean}>`
   @media (min-width: 1024px) {
     width: 3px;
     height: 100%;
-    ${(props) => props.hide === undefined ? '' : 'display: none;'}
+    ${(props) => (props.hide === undefined ? "" : "display: none;")}
   }
 `;
 
@@ -68,9 +72,13 @@ export const QuickNavigationWrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px 5px;
+
+  @media (min-width: 1024px) {
+    max-width: 325px;
+  }
 `;
 
-export const QuickNavigationItem = styled.a`
+export const QuickNavigationItem = styled(Link)`
   text-decoration: none;
   color: #fff;
   font-size: 24px;

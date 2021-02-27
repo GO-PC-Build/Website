@@ -10,19 +10,19 @@ import {
   NavigationSplitter,
   NavigationTitle,
   NavigationWrapper,
-  SocialsItem,
 } from "./Navigation.styled";
 import React, { useState } from "react";
 
-import GoPcBuildIcon from "../../assets/logo.png";
-import { socials } from "../../config";
 import { Divide } from "hamburger-react";
+import GoPcBuildIcon from "../../assets/logo.png";
+
+// import { socials } from "../../config";
 
 const navigation = [
   ["Home", "/"],
   ["Doe de quiz", "/quiz"],
   ["Reserveer", "/reserveer"],
-  ["Verbinden", "/connect"],
+  // ["Verbinden", "/connect"],
   ["Aanmelden", "/login"],
 ];
 
@@ -67,15 +67,6 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
             <NavigationItem key={index} to={item[1]}>
               {item[0]}
             </NavigationItem>
-          ))}
-        </NavigationInnerWrapper>
-        <NavigationInnerWrapper>
-          <NavigationTitle>Socials</NavigationTitle>
-          <NavigationSplitter />
-          {socials.map((item, index) => (
-            <SocialsItem key={index} href={item[1]} target="_blanc">
-              {item[0]}
-            </SocialsItem>
           ))}
         </NavigationInnerWrapper>
       </NavigationWrapper>

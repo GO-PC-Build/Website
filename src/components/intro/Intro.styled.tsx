@@ -8,7 +8,20 @@ export const IntroWrapper = styled.section`
   margin: 60px auto 0 auto;
 
   display: grid;
-  grid-gap: 50px;
+  grid-row-gap: 50px;
+
+  grid-template-areas:
+    "intro"
+    "desc"
+    "reserve"
+    "icon";
+
+  @media (min-width: 1500px) {
+    grid-template-areas:
+      "intro intro icon"
+      "desc desc icon"
+      "reserve reserve icon";
+  }
 `;
 
 export const Title = styled.h1`
@@ -20,9 +33,11 @@ export const Title = styled.h1`
   font-weight: 500;
   font-size: 42px;
   user-select: none;
+  grid-area: intro;
 `;
 
 export const Description = styled.p`
+  grid-area: desc;
   color: #000;
 
   font-weight: 300;
@@ -34,6 +49,7 @@ export const Description = styled.p`
 `;
 
 export const Reserve = styled(Link)`
+  grid-area: reserve;
   border: none;
   border-radius: 7px;
   display: block;
@@ -64,4 +80,11 @@ export const Reserve = styled(Link)`
   @media (min-width: 1024px) {
     margin: 0 0 0 40px;
   }
+`;
+
+export const SideIcons = styled.div`
+  grid-area: icon;
+  display: flex;
+  margin: auto;
+  user-select: none;
 `;

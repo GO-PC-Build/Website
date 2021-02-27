@@ -5,10 +5,11 @@ import {
   CardTitle,
   CardWrapper,
   CardsWrapper,
+  DesignSplitter,
   InnerCardWrapper,
 } from "./Cards.styled";
 
-import DiscordIcon from "../../assets/discord.png"
+import DiscordIcon from "../../assets/discord.png";
 import QuestionMarkIcon from "../../assets/question.png";
 import React from "react";
 import SmartschoolIcon from "../../assets/smartschool.png";
@@ -43,14 +44,17 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = (props) => (
-  <CardWrapper to={props.url}>
-    <CardIcon src={props.icon} alt="" odd={props.odd} />
-    <InnerCardWrapper odd={props.odd}>
-      <CardTitle odd={props.odd}>{props.title}</CardTitle>
-      <CardSplitter />
-      <CardDescription>{props.description}</CardDescription>
-    </InnerCardWrapper>
-  </CardWrapper>
+  <div>
+    {!props.odd && <DesignSplitter />}
+    <CardWrapper to={props.url}>
+      <CardIcon src={props.icon} alt="" odd={props.odd} />
+      <InnerCardWrapper odd={props.odd}>
+        <CardTitle odd={props.odd}>{props.title}</CardTitle>
+        <CardSplitter />
+        <CardDescription>{props.description}</CardDescription>
+      </InnerCardWrapper>
+    </CardWrapper>
+  </div>
 );
 
 export const Cards: React.FC = () => (

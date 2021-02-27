@@ -100,3 +100,13 @@ export const CardDescription = styled.p`
   font-size: 24px;
   line-height: 30px;
 `;
+
+export const DesignSplitter = styled.div`
+  @media (min-width: 1100px) {
+    height: 300px;
+  }
+
+  @media (min-width: 1500px) {
+    height: 69px;
+  }
+`;

@@ -95,11 +95,16 @@ export const NavigationWrapper = styled.nav<NavigationWrapperProps>`
 export const NavigationInnerWrapper = styled.div`
   width: calc(100% - 20px);
   margin: 0 auto;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  @media (min-width: 1024px) {
+    height: 80%;
+  }
 `;
 
 export const NavigationTitle = styled.h2`
