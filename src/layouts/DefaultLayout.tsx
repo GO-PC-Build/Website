@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { Covid } from "../components/covid/Covid.comp";
@@ -83,7 +83,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   });
 
   return (
-    <Suspense fallback={<p>Loading</p>}>
+    // <Suspense fallback={<p>Loading</p>}>
+    <>
       <Helmet>
         <title>GO-PC Build{props.title && ` | ${props.title}`}</title>
       </Helmet>
@@ -107,6 +108,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         {props.children}
       </MainContent>
       <Footer />
-    </Suspense>
+    </>
+    // </Suspense>
   );
 };

@@ -1,4 +1,4 @@
-import React, { lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Redirect,
   Route,
@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
+import IndexPage from "./pages";
+import ReservePage from "./pages/reserve";
 
 const Draaiboek = () => {
   useEffect(() => {
@@ -16,8 +18,8 @@ const Draaiboek = () => {
   return <Redirect to="/static/draaiboek.pdf" />;
 }
 
-const IndexPage = lazy(() => import("./pages/index"));
-const ReservePage = lazy(() => import("./pages/reserve"));
+// const IndexPage = lazy(() => import("./pages/index"));
+// const ReservePage = lazy(() => import("./pages/reserve"));
 
 const App = () => (
   <Router>
