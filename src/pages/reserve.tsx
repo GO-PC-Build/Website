@@ -1,5 +1,5 @@
 import { Description, Title } from "../components/intro/Intro.styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
@@ -92,6 +92,12 @@ const ReserveCodeText = styled.h4`
   font-size: 1.5rem;
 `;
 
+const ReserveCodeNote = styled.span`
+  font-size: 1.1rem;
+  color: #ff2012;
+  margin-left: 5px;
+`;
+
 const ReserveCode = styled.input`
   border: 2px solid #0a142c;
   border-radius: 7px;
@@ -162,6 +168,26 @@ const Centerer = styled.div`
 `;
 
 export const ReservePage: React.FC = () => {
+  const [data, setData] = useState<number[][]>([[], []]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setData([[3], [1]]);
+    };
+
+    fetchData();
+  }, []);
+
+  return <ReservePageContent data={data} />;
+};
+
+const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
+  const [workshop, setWorkshop] = useState<number>(0);
+  const [selected, setSelected] = useState<number>();
+
+  if (selected && props.data[workshop].includes(selected))
+    setSelected(undefined);
+
   return (
     <React.Fragment>
       <Wrapper>
@@ -172,17 +198,51 @@ export const ReservePage: React.FC = () => {
           maart) is voor de 1ste graad.
         </Description>
         <ButtonsWrapper>
-          <WorkshopButton>Workshop 1</WorkshopButton>
-          <WorkshopButton>Workshop 2</WorkshopButton>
+          <WorkshopButton onClick={() => setWorkshop(0)}>
+            Workshop 1
+          </WorkshopButton>
+          <WorkshopButton onClick={() => setWorkshop(1)}>
+            Workshop 2
+          </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>
-      <Board />
+      <Board
+        data={props.data[workshop]}
+        selected={selected}
+        setSelected={setSelected}
+      />
     </React.Fragment>
   );
 };
 
-const Board: React.FC = () => {
-  const [selected, setSelected] = useState<number>();
+const notes = {
+  noLocation: "Je hebt nog geen locatie geselecteerd!",
+  noCode: "Je hebt nog geen code ingegeven!",
+  invalidCode: "Code is niet gelding!",
+};
+
+const Board: React.FC<{
+  data: number[];
+  selected: number | undefined;
+  setSelected: React.Dispatch<React.SetStateAction<number | undefined>>;
+}> = (props) => {
+  const [code, setCode] = useState<string>("");
+  const [note, setNote] = useState<string>("");
+
+  if (
+    (note === notes.noLocation && props.selected) ||
+    (note === notes.noCode && code)
+  )
+    setNote("");
+
+  const handleSubmit = () => {
+    if (!props.selected) setNote(notes.noLocation);
+    else if (!code) setNote(notes.noCode);
+    else {
+      console.log(props.selected, code);
+      // TODO: Send api request and validate if it was a success!
+    }
+  };
 
   return (
     <BoardPanelWrapper>
@@ -192,18 +252,26 @@ const Board: React.FC = () => {
           {[...Array(15)].map((_, i) => (
             <Square
               key={i}
-              isReserved={i % 3 === 0}
+              isReserved={props.data.includes(i)}
               index={i}
-              isSelected={selected === i}
-              setSelected={setSelected}
+              isSelected={props.selected === i}
+              setSelected={props.setSelected}
             />
           ))}
         </BoardWrapper>
       </Centerer>
       <ReserveWrapper>
-        <ReserveCodeText>Code</ReserveCodeText>
-        <ReserveCode />
-        <WorkshopButton style={{ width: "100%" }}>Reserveer nu</WorkshopButton>
+        <ReserveCodeText>
+          Code{note && <ReserveCodeNote>*{note}</ReserveCodeNote>}
+        </ReserveCodeText>
+        <ReserveCode
+          type="number"
+          onChange={(e) => setCode(e.target.value)}
+          value={code}
+        />
+        <WorkshopButton style={{ width: "100%" }} onClick={handleSubmit}>
+          Reserveer nu
+        </WorkshopButton>
       </ReserveWrapper>
     </BoardPanelWrapper>
   );
