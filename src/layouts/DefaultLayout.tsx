@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import { Covid } from "../components/covid/Covid.comp";
 import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
+import { Redirect } from "react-router";
+import axios from "axios";
 
 export interface DefaultLayoutProps {
   title?: string;
+  requiresLogin?: boolean;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -73,18 +76,72 @@ const MainContent = styled.main`
   }
 `;
 
+export interface GoAoUser {
+  internalnr: number;
+  lastname: string;
+  firstname: string;
+}
+
+const loadingUser: GoAoUser = {
+  internalnr: 0,
+  firstname: "Loading",
+  lastname: "",
+};
+
+export const AccountContext = createContext<GoAoUser>(loadingUser);
+
+const getCookie = (cname: string) => {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === " ") c = c.substring(1);
+    if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+  }
+  return "";
+};
+
 export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   const [covidIsOpen, setCovidIsOpen] = useState(false);
   const [navIsOpen, setNavIsOpen] = useState(false);
+  const [account, setAccount] = useState<GoAoUser>(loadingUser);
+  const [proceedToLogin, setProceedToLogin] = useState(false);
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      const session = getCookie("auth");
+      if (!props.requiresLogin && session === "") return;
+      else if (props.requiresLogin && session === "") {
+        localStorage.setItem("forward", window.location.href);
+        setProceedToLogin(true);
+        return;
+      }
+
+      const development = process.env.NODE_ENV === "development";
+      const req = await axios.post(
+        "https://www.go-atheneumoudenaarde.be/dashboard/OAuthGetJson.php",
+        {
+          app: development ? "test" : "gpb",
+          session,
+        }
+      );
+
+      setAccount(req.data);
+    };
+
+    fetchAccount();
+  }, [props.requiresLogin]);
 
   window.addEventListener("scroll", () => {
     setNavIsOpen(false);
     setCovidIsOpen(false);
   });
 
-  return (
-    // <Suspense fallback={<p>Loading</p>}>
-    <>
+  return proceedToLogin ? (
+    <Redirect to="/login" />
+  ) : (
+    <AccountContext.Provider value={account}>
       <Helmet>
         <title>GO-PC Build{props.title && ` | ${props.title}`}</title>
       </Helmet>
@@ -108,7 +165,6 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         {props.children}
       </MainContent>
       <Footer />
-    </>
-    // </Suspense>
+    </AccountContext.Provider>
   );
 };

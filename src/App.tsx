@@ -4,7 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  useParams,
+  useLocation,
 } from "react-router-dom";
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
@@ -20,13 +20,20 @@ const Draaiboek = () => {
 };
 
 const SignIn: React.FC = () => {
-  const { code } = useParams<{ code: string }>();
+  const token = new URLSearchParams(useLocation().search).get("code");
 
-  return <Redirect to="/" />;
+  const date = new Date();
+  date.setDate(date.getDate() + 7);
+  document.cookie = `auth=${token}; expires=${date}; path=/; samesite=strict`;
+
+  window.location.href = localStorage.getItem("forward") ?? "/";
+  localStorage.removeItem("forward");
+  return (
+    <>
+      Redirect to <a href="/">home</a>
+    </>
+  );
 };
-
-// const IndexPage = lazy(() => import("./pages/index"));
-// const ReservePage = lazy(() => import("./pages/reserve"));
 
 const App = () => (
   <Router>
@@ -44,7 +51,7 @@ const App = () => (
         exact
         path="/reserveer"
         render={() => (
-          <DefaultLayout title={"Reserveer"}>
+          <DefaultLayout requiresLogin title={"Reserveer"}>
             <ReservePage />
           </DefaultLayout>
         )}
@@ -65,6 +72,14 @@ const App = () => (
       />
       <Route exact path="/sign/:leerlingId" render={() => <SignIn />} />
       <Route exact path="/draaiboek" render={() => <Draaiboek />} />
+      <Route
+        exact
+        path="/logout"
+        render={() => {
+          document.cookie = "auth=; expires=;";
+          return <Redirect to="/" />;
+        }}
+      />
       <Redirect to="/" />
     </Switch>
   </Router>

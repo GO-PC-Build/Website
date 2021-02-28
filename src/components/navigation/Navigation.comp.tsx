@@ -11,8 +11,9 @@ import {
   NavigationTitle,
   NavigationWrapper,
 } from "./Navigation.styled";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
+import { AccountContext } from "../../layouts/DefaultLayout";
 import { Divide } from "hamburger-react";
 import GoPcBuildIcon from "../../assets/logo.png";
 
@@ -23,7 +24,6 @@ const navigation = [
   ["Doe de quiz", "/quiz"],
   ["Reserveer", "/reserveer"],
   // ["Verbinden", "/connect"],
-  ["Aanmelden", "/login"],
 ];
 
 interface NavigationProps {
@@ -34,6 +34,7 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = (props) => {
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
+  const ctx = useContext(AccountContext);
 
   window.addEventListener("resize", () => setInnerHeight(window.innerHeight));
 
@@ -68,6 +69,18 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
               {item[0]}
             </NavigationItem>
           ))}
+          {ctx.internalnr === 0 ? (
+            <NavigationItem
+              onClick={() =>
+                localStorage.setItem("forward", window.location.href)
+              }
+              to="/login"
+            >
+              Aanmelden
+            </NavigationItem>
+          ) : (
+            <NavigationItem to="/logout">Afmelden</NavigationItem>
+          )}
         </NavigationInnerWrapper>
       </NavigationWrapper>
       <ContentDarkener
