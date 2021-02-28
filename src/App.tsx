@@ -4,6 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
+  useParams,
 } from "react-router-dom";
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
@@ -13,10 +14,16 @@ import ReservePage from "./pages/reserve";
 const Draaiboek = () => {
   useEffect(() => {
     window.location.reload();
-  }, [])
+  }, []);
 
   return <Redirect to="/static/draaiboek.pdf" />;
-}
+};
+
+const SignIn: React.FC = () => {
+  const { code } = useParams<{ code: string }>();
+
+  return <Redirect to="/" />;
+};
 
 // const IndexPage = lazy(() => import("./pages/index"));
 // const ReservePage = lazy(() => import("./pages/reserve"));
@@ -49,9 +56,15 @@ const App = () => (
       />
       <Route
         exact
-        path="/draaiboek"
-        render={() => <Draaiboek />}
+        path="/login"
+        render={() =>
+          (window.location.href = `https://www.go-atheneumoudenaarde.be/dashboard/QAuthLogin.php?app=${
+            process.env.NODE_ENV === "development" ? "test" : "gpb"
+          }`)
+        }
       />
+      <Route exact path="/sign/:leerlingId" render={() => <SignIn />} />
+      <Route exact path="/draaiboek" render={() => <Draaiboek />} />
       <Redirect to="/" />
     </Switch>
   </Router>
