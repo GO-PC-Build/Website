@@ -27,7 +27,7 @@ export const Covid: React.FC<CovidProps> = (props) => (
   >
     <CovidPeekWrapper>
       <CovidIcon src={VirusIcon} alt="" />
-      <CovidText>{"C O V I D".replaceAll(" ", "\n")}</CovidText>
+      <CovidText>{"C O V I D".replace(/./g, "\n")}</CovidText>
     </CovidPeekWrapper>
     <CovidSplitter />
     <CovidMessage>
