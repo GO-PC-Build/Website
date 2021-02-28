@@ -110,13 +110,15 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
 
   useEffect(() => {
     const fetchAccount = async () => {
-      const session = getCookie("auth");
-      if (!props.requiresLogin && session === "") return;
-      else if (props.requiresLogin && session === "") {
+      const login = () => {
         localStorage.setItem("forward", window.location.href);
         setProceedToLogin(true);
         return;
-      }
+      };
+
+      const session = getCookie("auth");
+      if (!props.requiresLogin && session === "") return;
+      else if (props.requiresLogin && session === "") login();
 
       const development = process.env.NODE_ENV === "development";
       const req = await axios.post(
@@ -127,7 +129,8 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         }
       );
 
-      setAccount(req.data);
+      if (req.data !== []) setAccount(req.data);
+      else if (props.requiresLogin) login();
     };
 
     fetchAccount();

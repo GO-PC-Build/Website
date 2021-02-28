@@ -1,6 +1,8 @@
 import { Description, Title } from "../components/intro/Intro.styled";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import { AccountContext } from "../layouts/DefaultLayout";
+import axios from "axios";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -210,6 +212,7 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
         data={props.data[workshop]}
         selected={selected}
         setSelected={setSelected}
+        workshop={workshop}
       />
     </React.Fragment>
   );
@@ -218,16 +221,20 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
 const notes = {
   noLocation: "Je hebt nog geen locatie geselecteerd!",
   noCode: "Je hebt nog geen code ingegeven!",
-  invalidCode: "Code is niet gelding!",
+  invalidCode: "Code is ongeldig of is al gebruikt!",
 };
 
-const Board: React.FC<{
+interface BoardProps {
   data: number[];
   selected: number | undefined;
   setSelected: React.Dispatch<React.SetStateAction<number | undefined>>;
-}> = (props) => {
+  workshop: number;
+}
+
+const Board: React.FC<BoardProps> = (props) => {
   const [code, setCode] = useState<string>("");
   const [note, setNote] = useState<string>("");
+  const { internalnr } = useContext(AccountContext);
 
   if (
     (note === notes.noLocation && props.selected) ||
@@ -236,18 +243,42 @@ const Board: React.FC<{
     setNote("");
 
   const handleSubmit = () => {
-    if (!props.selected) setNote(notes.noLocation);
+    if (props.selected === undefined) setNote(notes.noLocation);
     else if (!code) setNote(notes.noCode);
     else {
       console.log(props.selected, code);
-      // TODO: Send api request and validate if it was a success!
+
+      const sendRequest = async () => {
+        const urlBase =
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:25578"
+            : "https://api.arthurdw.com/go-pc-build";
+        console.log(internalnr);
+        try {
+          const req = await axios.post(urlBase + "/reserve", {
+            user_id: internalnr,
+            workshop: props.workshop,
+            location: props.selected,
+            code: parseInt(code),
+          });
+
+          if (req.data?.success) {
+            setNote("");
+            // success
+          } else throw Error();
+        } catch (e) {
+          setNote(notes.invalidCode);
+        }
+      };
+
+      sendRequest();
     }
   };
 
   return (
     <BoardPanelWrapper>
       <Centerer>
-        <BoardTitle>Bord</BoardTitle>
+        <BoardTitle>Voorkant lokaal</BoardTitle>
         <BoardWrapper>
           {[...Array(15)].map((_, i) => (
             <Square
