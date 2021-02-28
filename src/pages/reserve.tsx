@@ -85,6 +85,7 @@ const ReserveWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 80vw;
 `;
 
 const ReserveCodeText = styled.h4`
@@ -104,6 +105,11 @@ const SquareButton = styled.button`
 
   width: 30px;
   height: 30px;
+
+  @media (min-width: 350px) {
+    width: 35px;
+    height: 35px;
+  }
 
   @media (min-width: 380px) {
     width: 40px;
