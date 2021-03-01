@@ -200,11 +200,17 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
           maart) is voor de 1ste graad.
         </Description>
         <ButtonsWrapper>
-          <WorkshopButton onClick={() => setWorkshop(0)}>
-            Workshop 1
+          <WorkshopButton
+            onClick={() => setWorkshop(0)}
+            style={{ backgroundColor: workshop === 0 ? "#05F400" : undefined }}
+          >
+            24 maart
           </WorkshopButton>
-          <WorkshopButton onClick={() => setWorkshop(1)}>
-            Workshop 2
+          <WorkshopButton
+            onClick={() => setWorkshop(1)}
+            style={{ backgroundColor: workshop === 1 ? "#05F400" : undefined }}
+          >
+            31 maart
           </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>
