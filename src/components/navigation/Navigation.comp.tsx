@@ -83,7 +83,7 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
             <NavigationItem to="/logout">Afmelden</NavigationItem>
           )}
         </NavigationInnerWrapper>
-        <UserNameWrapper>{ctx.firstname} {ctx.lastname}</UserNameWrapper>
+        {ctx.firstname !== "Loading" && <UserNameWrapper>{ctx.firstname} {ctx.lastname}</UserNameWrapper>}
       </NavigationWrapper>
       <ContentDarkener
         onClick={() => props.setOpen(false)}
