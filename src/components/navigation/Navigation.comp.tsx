@@ -22,7 +22,7 @@ import GoPcBuildIcon from "../../assets/logo.png";
 const navigation = [
   ["Home", "/"],
   ["Doe de quiz", "/quiz"],
-  ["Reserveer", "/reserveer"],
+  ["Reservatie", "/reserveer"],
   // ["Verbinden", "/connect"],
 ];
 

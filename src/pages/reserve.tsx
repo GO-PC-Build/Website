@@ -2,6 +2,7 @@ import { Description, Title } from "../components/intro/Intro.styled";
 import React, { useContext, useEffect, useState } from "react";
 
 import { AccountContext } from "../layouts/DefaultLayout";
+import { Redirect } from "react-router";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -171,16 +172,36 @@ const Centerer = styled.div`
 
 export const ReservePage: React.FC = () => {
   const [data, setData] = useState<number[][]>([[], []]);
+  const [reserved, setReserved] = useState(false);
+  const { internalnr } = useContext(AccountContext);
 
   useEffect(() => {
     const fetchData = async () => {
-      setData([[3], [1]]);
+      const urlBase =
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:25578"
+          : "https://api.arthurdw.com/go-pc-build";
+
+      const user = await axios.get(`${urlBase}/user/id/${internalnr}`);
+
+      if (user.data.exists) {
+        setReserved(true);
+        return;
+      }
+
+      const schemes = await axios.get(`${urlBase}/schemes`);
+
+      setData(schemes.data.schemes);
     };
 
     fetchData();
-  }, []);
+  }, [internalnr]);
 
-  return <ReservePageContent data={data} />;
+  return reserved ? (
+    <Redirect to="/reservatie" />
+  ) : (
+    <ReservePageContent data={data} />
+  );
 };
 
 const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
@@ -214,7 +235,7 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
           </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>
-      <Board
+      <FullBoard
         data={props.data[workshop]}
         selected={selected}
         setSelected={setSelected}
@@ -234,12 +255,17 @@ interface BoardProps {
   data: number[];
   selected: number | undefined;
   setSelected: React.Dispatch<React.SetStateAction<number | undefined>>;
+  allowSet?: boolean;
+}
+
+interface FullBoardProps extends BoardProps {
   workshop: number;
 }
 
-const Board: React.FC<BoardProps> = (props) => {
+const FullBoard: React.FC<FullBoardProps> = (props) => {
   const [code, setCode] = useState<string>("");
   const [note, setNote] = useState<string>("");
+  const [reserved, setReserved] = useState(false);
   const { internalnr } = useContext(AccountContext);
 
   if (
@@ -252,14 +278,12 @@ const Board: React.FC<BoardProps> = (props) => {
     if (props.selected === undefined) setNote(notes.noLocation);
     else if (!code) setNote(notes.noCode);
     else {
-      console.log(props.selected, code);
-
       const sendRequest = async () => {
         const urlBase =
           process.env.NODE_ENV === "development"
             ? "http://localhost:25578"
             : "https://api.arthurdw.com/go-pc-build";
-        console.log(internalnr);
+
         try {
           const req = await axios.post(urlBase + "/reserve", {
             user_id: internalnr,
@@ -270,7 +294,7 @@ const Board: React.FC<BoardProps> = (props) => {
 
           if (req.data?.success) {
             setNote("");
-            // success
+            setReserved(true);
           } else throw Error();
         } catch (e) {
           setNote(notes.invalidCode);
@@ -281,22 +305,16 @@ const Board: React.FC<BoardProps> = (props) => {
     }
   };
 
-  return (
+  return reserved ? (
+    <Redirect to="/reservatie" />
+  ) : (
     <BoardPanelWrapper>
-      <Centerer>
-        <BoardTitle>Voorkant lokaal</BoardTitle>
-        <BoardWrapper>
-          {[...Array(15)].map((_, i) => (
-            <Square
-              key={i}
-              isReserved={props.data.includes(i)}
-              index={i}
-              isSelected={props.selected === i}
-              setSelected={props.setSelected}
-            />
-          ))}
-        </BoardWrapper>
-      </Centerer>
+      <Board
+        data={props.data}
+        selected={props.selected}
+        setSelected={props.setSelected}
+        allowSet
+      />
       <ReserveWrapper>
         <ReserveCodeText>
           Code{note && <ReserveCodeNote>*{note}</ReserveCodeNote>}
@@ -314,11 +332,30 @@ const Board: React.FC<BoardProps> = (props) => {
   );
 };
 
+export const Board: React.FC<BoardProps> = (props) => (
+  <Centerer>
+    <BoardTitle>Voorkant lokaal</BoardTitle>
+    <BoardWrapper>
+      {[...Array(15)].map((_, i) => (
+        <Square
+          key={i}
+          isReserved={props.data.includes(i)}
+          index={i}
+          isSelected={props.selected === i}
+          setSelected={props.setSelected}
+          allowSet={!!props.allowSet}
+        />
+      ))}
+    </BoardWrapper>
+  </Centerer>
+);
+
 interface SquareProps {
   index: number;
   isReserved: boolean;
   isSelected: boolean;
   setSelected: React.Dispatch<React.SetStateAction<number | undefined>>;
+  allowSet: boolean;
 }
 
 const Square: React.FC<SquareProps> = (props) => {
@@ -327,16 +364,27 @@ const Square: React.FC<SquareProps> = (props) => {
     : props.isSelected
     ? "#05F400"
     : undefined;
-  const cursor = props.isReserved ? "default" : undefined;
+  const cursor = props.allowSet
+    ? props.isReserved
+      ? "default"
+      : undefined
+    : undefined;
 
   const handleClick = () => {
-    if (!props.isReserved) props.setSelected(props.index);
+    if (!props.allowSet) return;
+    else if (!props.isReserved) props.setSelected(props.index);
   };
 
   return (
     <SquareButton
       style={{ backgroundColor, cursor }}
-      title={props.isReserved ? "Deze plaats is al in gebruik!" : undefined}
+      title={
+        props.allowSet
+          ? props.isReserved
+            ? "Deze plaats is al in gebruik!"
+            : undefined
+          : undefined
+      }
       onClick={handleClick}
     />
   );

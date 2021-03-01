@@ -9,6 +9,7 @@ import {
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
 import IndexPage from "./pages";
+import ReservationPage from "./pages/reservation";
 import ReservePage from "./pages/reserve";
 
 const Draaiboek = () => {
@@ -53,6 +54,15 @@ const App = () => (
         render={() => (
           <DefaultLayout requiresLogin title={"Reserveer"}>
             <ReservePage />
+          </DefaultLayout>
+        )}
+      />
+      <Route
+        exact
+        path="/reservatie"
+        render={() => (
+          <DefaultLayout requiresLogin title={"Mijn reservatie"}>
+            <ReservationPage />
           </DefaultLayout>
         )}
       />

@@ -129,7 +129,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         }
       );
 
-      if (req.data !== []) setAccount(req.data);
+      if (req.data.length !== 0) setAccount(req.data);
       else if (props.requiresLogin) login();
     };
 
