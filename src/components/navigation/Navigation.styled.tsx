@@ -169,3 +169,9 @@ export const HamburgerWrapper = styled.div`
     display: none;
   }
 `;
+
+export const UserNameWrapper = styled.p`
+  margin: auto auto 20px auto;
+  font-size: 1.5rem;
+  user-select: none;
+`

@@ -10,6 +10,7 @@ import {
   NavigationSplitter,
   NavigationTitle,
   NavigationWrapper,
+  UserNameWrapper,
 } from "./Navigation.styled";
 import React, { useContext, useState } from "react";
 
@@ -82,6 +83,7 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
             <NavigationItem to="/logout">Afmelden</NavigationItem>
           )}
         </NavigationInnerWrapper>
+        <UserNameWrapper>{ctx.firstname} {ctx.lastname}</UserNameWrapper>
       </NavigationWrapper>
       <ContentDarkener
         onClick={() => props.setOpen(false)}

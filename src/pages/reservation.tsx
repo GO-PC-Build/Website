@@ -21,6 +21,7 @@ export const ReservationPage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (internalnr === 0) return;
       const urlBase =
         process.env.NODE_ENV === "development"
           ? "http://localhost:25578"

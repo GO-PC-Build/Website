@@ -82,6 +82,7 @@ const BoardTitle = styled.h3`
   text-align: center;
   font-size: 1.5rem;
   margin: 0 auto;
+  user-select: none;
 `;
 
 const ReserveWrapper = styled.div`
@@ -177,6 +178,8 @@ export const ReservePage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (internalnr === 0) return;
+
       const urlBase =
         process.env.NODE_ENV === "development"
           ? "http://localhost:25578"
