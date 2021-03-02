@@ -29,11 +29,7 @@ const SignIn: React.FC = () => {
 
   window.location.href = localStorage.getItem("forward") ?? "/";
   localStorage.removeItem("forward");
-  return (
-    <>
-      Redirect to <a href="/">home</a>
-    </>
-  );
+  return <></>;
 };
 
 const App = () => (
