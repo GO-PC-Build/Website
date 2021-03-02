@@ -88,7 +88,7 @@ export const SideIcons = styled.div`
   margin: auto;
   user-select: none;
 
-  @media (max-width: 500px) {
+  @media (max-width: 660px) {
     flex-direction: column;
     overflow: hidden;
 
