@@ -17,8 +17,16 @@ export const Intro: React.FC = () => (
       bestuurings systeem installeren!
     </Description>
     <SideIcons>
-      <img style={{ height: 174, width: 128, marginRight: 20 }} src="/static/stube.jpg" alt="" />
-      <img style={{ height: 110, width: 266, margin: "auto" }} src="/static/go-ao.png" alt="" />
+      <img
+        style={{ width: 128, marginRight: 20 }}
+        src="/static/stube.jpg"
+        alt=""
+      />
+      <img
+        style={{ width: 266, margin: "auto", maxWidth: "80vw" }}
+        src="/static/go-ao.png"
+        alt=""
+      />
     </SideIcons>
     <Reserve to="/reserveer">Reserveer nu</Reserve>
   </IntroWrapper>
