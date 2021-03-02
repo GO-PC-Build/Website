@@ -80,12 +80,14 @@ export interface GoAoUser {
   internalnr: number;
   lastname: string;
   firstname: string;
+  class: string;
 }
 
 const loadingUser: GoAoUser = {
   internalnr: 0,
   firstname: "Loading",
   lastname: "",
+  class: ""
 };
 
 export const AccountContext = createContext<GoAoUser>(loadingUser);
@@ -129,7 +131,16 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         }
       );
 
-      if (req.data.length !== 0) setAccount(req.data);
+      if (req.data.length !== 0) {
+        const user: GoAoUser = {
+          internalnr: req.data?.internalnr,
+          firstname: req.data?.firstname,
+          lastname: req.data?.lastname,
+          class: req.data.groepen?.[0].name,
+        };
+
+        setAccount(user);
+      }
       else if (props.requiresLogin) login();
     };
 

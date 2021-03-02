@@ -269,7 +269,7 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
   const [code, setCode] = useState<string>("");
   const [note, setNote] = useState<string>("");
   const [reserved, setReserved] = useState(false);
-  const { internalnr } = useContext(AccountContext);
+  const ctx = useContext(AccountContext);
 
   if (
     (note === notes.noLocation && props.selected) ||
@@ -289,7 +289,7 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
 
         try {
           const req = await axios.post(urlBase + "/reserve", {
-            user_id: internalnr,
+            ...ctx,
             workshop: props.workshop,
             location: props.selected,
             code: parseInt(code),
