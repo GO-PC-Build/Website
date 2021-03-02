@@ -69,6 +69,11 @@ const App = () => (
       />
       <Route
         exact
+        path="/quiz"
+        render={() => (window.location.href = "http://www.quiz-maker.com/QMC5HZ3AN")}
+      />
+      <Route
+        exact
         path="/login"
         render={() =>
           (window.location.href = `https://www.go-atheneumoudenaarde.be/dashboard/QAuthLogin.php?app=${
