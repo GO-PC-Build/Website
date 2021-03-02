@@ -333,6 +333,9 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
         <WorkshopButton style={{ width: "100%" }} onClick={handleSubmit}>
           Reserveer nu
         </WorkshopButton>
+        <ReserveCodeText style={{ fontSize: "1.2rem" }}>
+          (Koop je code op school met epay)
+        </ReserveCodeText>
       </ReserveWrapper>
     </BoardPanelWrapper>
   );
@@ -340,7 +343,7 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
 
 export const Board: React.FC<BoardProps> = (props) => (
   <Centerer>
-    <BoardTitle>Voorkant lokaal</BoardTitle>
+    <BoardTitle>Voorkant lokaal F-L003</BoardTitle>
     <BoardWrapper>
       {[...Array(15)].map((_, i) => (
         <Square

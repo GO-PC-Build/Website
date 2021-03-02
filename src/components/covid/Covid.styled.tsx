@@ -44,6 +44,7 @@ export const CovidIcon = styled.img`
   width: 24px;
   height: 24px;
   user-select: none;
+  margin: 0 auto;
 `;
 
 export const CovidText = styled.h2`
