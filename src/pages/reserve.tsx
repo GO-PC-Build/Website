@@ -219,22 +219,25 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
       <Wrapper>
         <Title>Kies je plaats</Title>
         <Description>
-          Je kan hier je plaats reserver voor de workshops. <br />
-          De eerste (24 maart) is voor de 2de graad en de tweede workshop (31
-          maart) is voor de 1ste graad.
+          Je kan hier je plaats reserveren voor de workshops. <br />
+          31 maart: 1ste graad
+          <br />
+          21 april: 2de graad
+          <br />
+          12:30u - 14:00u
         </Description>
         <ButtonsWrapper>
           <WorkshopButton
             onClick={() => setWorkshop(0)}
             style={{ backgroundColor: workshop === 0 ? "#05F400" : undefined }}
           >
-            24 maart
+            31 maart
           </WorkshopButton>
           <WorkshopButton
             onClick={() => setWorkshop(1)}
             style={{ backgroundColor: workshop === 1 ? "#05F400" : undefined }}
           >
-            31 maart
+            21 april
           </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>

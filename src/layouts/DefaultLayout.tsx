@@ -105,7 +105,7 @@ const getCookie = (cname: string) => {
 };
 
 export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
-  const [covidIsOpen, setCovidIsOpen] = useState(false);
+  const [covidIsOpen, setCovidIsOpen] = useState(true);
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [account, setAccount] = useState<GoAoUser>(loadingUser);
   const [proceedToLogin, setProceedToLogin] = useState(false);

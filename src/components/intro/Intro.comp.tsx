@@ -13,12 +13,12 @@ export const Intro: React.FC = () => (
     <Title>Welkom bij{"\n"}GO-PC Build</Title>
     <div />
     <Description>
-      Leer bij ons professioneel een pc bouwen! Van het samenstellen tot het
-      bestuurings systeem installeren!
+      Leer bij ons professioneel een pc bouwen. Van het samenstellen tot het
+      bestuuringssysteem installeren.
     </Description>
     <SideIcons>
       <img
-        style={{ width: 128, marginRight: 20 }}
+        style={{ width: 266, marginRight: 20, maxWidth: "80vw" }}
         src="/static/stube.jpg"
         alt=""
       />

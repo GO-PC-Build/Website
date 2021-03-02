@@ -24,13 +24,13 @@ const data = [
   {
     title: "Join onze\nDiscord",
     url: "/discord",
-    description: "Hulp nodig? Join onze discord voor updates & vragen!",
+    description: "Hulp nodig? Join onze discord voor updates & vragen.",
     icon: DiscordIcon,
   },
   {
     title: "Verbind\nSmartschool",
     url: "/connect",
-    description: "Reserveer gemakkenlijk je plek online!",
+    description: "Reserveer gemakkenlijk je plek coronaproof online.",
     icon: SmartschoolIcon,
   },
 ];

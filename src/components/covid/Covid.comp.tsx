@@ -31,18 +31,20 @@ export const Covid: React.FC<CovidProps> = (props) => (
     </CovidPeekWrapper>
     <CovidSplitter />
     <CovidMessage>
-      Door de corona maatregelen zijn er wat dingen waaraan we ons moeten
-      houden: <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;24 maart is voor de 2de graad
+      Door de coronamaatregelen zijn er regels waaraan we ons moeten
+      houden binnen het GO onderwijs: <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;31 maart: 1ste graad
       <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;31 maart is voor de 1ste graad
+      &nbsp;&nbsp;&nbsp;&nbsp;21 april: 2de graad
       <br />
       &nbsp;&nbsp;&nbsp;&nbsp;15 leerlingen per workshop
       <br />
-      De workshops beginnen om 12:30 dus je mag nog op school blijven om te
-      eten!
+      &nbsp;&nbsp;&nbsp;&nbsp;12:30u - 14:00u
       <br />
-      Je kan ons draaiboek op <Link to="/draaiboek">gpb.go-ao.be/draaiboek</Link> vinden!
+      &nbsp;&nbsp;&nbsp;&nbsp;eten kan nog buiten van 12:00u - 12:30u
+      <br />
+      <br />
+      Je kan ons draaiboek op <Link to="/draaiboek">gpb.go-ao.be/draaiboek</Link> vinden.
     </CovidMessage>
   </CovidWrapper>
 );
