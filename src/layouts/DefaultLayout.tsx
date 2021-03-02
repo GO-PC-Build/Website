@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import { CookieNotifier } from "../components/CookieNotifier/CookieNotifier.comp";
 import { Covid } from "../components/covid/Covid.comp";
 import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
@@ -87,12 +88,12 @@ const loadingUser: GoAoUser = {
   internalnr: 0,
   firstname: "Loading",
   lastname: "",
-  class: ""
+  class: "",
 };
 
 export const AccountContext = createContext<GoAoUser>(loadingUser);
 
-const getCookie = (cname: string) => {
+export const getCookie = (cname: string) => {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(";");
@@ -140,8 +141,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         };
 
         setAccount(user);
-      }
-      else if (props.requiresLogin) login();
+      } else if (props.requiresLogin) login();
     };
 
     fetchAccount();
@@ -177,6 +177,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         }}
       >
         {props.children}
+        <CookieNotifier />
       </MainContent>
       <Footer />
     </AccountContext.Provider>
