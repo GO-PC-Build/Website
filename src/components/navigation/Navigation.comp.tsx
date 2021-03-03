@@ -7,6 +7,7 @@ import {
   NavigationHeaderInnerWrapper,
   NavigationInnerWrapper,
   NavigationItem,
+  NavigationRawItem,
   NavigationSplitter,
   NavigationTitle,
   NavigationWrapper,
@@ -22,7 +23,7 @@ import GoPcBuildIcon from "../../assets/logo.png";
 
 const navigation = [
   ["Home", "/"],
-  ["Doe de quiz", "/quiz"],
+  ["Doe de quiz", "/quiz", "_blanc"],
   ["Reservatie", "/reserveer"],
   // ["Verbinden", "/connect"],
 ];
@@ -65,11 +66,17 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
         <NavigationInnerWrapper>
           <NavigationTitle>GO-PC Build</NavigationTitle>
           <NavigationSplitter />
-          {navigation.map((item, index) => (
-            <NavigationItem key={index} to={item[1]}>
-              {item[0]}
-            </NavigationItem>
-          ))}
+          {navigation.map((item, index) =>
+            !item?.[2] ? (
+              <NavigationItem key={index} to={item[1]}>
+                {item[0]}
+              </NavigationItem>
+            ) : (
+              <NavigationRawItem key={index} href={item[1]} target={item[2]}>
+                {item[0]}
+              </NavigationRawItem>
+            )
+          )}
           {ctx.internalnr === 0 ? (
             <NavigationItem
               onClick={() =>
@@ -83,7 +90,11 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
             <NavigationItem to="/logout">Afmelden</NavigationItem>
           )}
         </NavigationInnerWrapper>
-        {ctx.firstname !== "Loading" && <UserNameWrapper>{ctx.firstname} {ctx.lastname}</UserNameWrapper>}
+        {ctx.firstname !== "Loading" && (
+          <UserNameWrapper>
+            {ctx.firstname} {ctx.lastname}
+          </UserNameWrapper>
+        )}
       </NavigationWrapper>
       <ContentDarkener
         onClick={() => props.setOpen(false)}

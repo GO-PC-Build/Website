@@ -1,5 +1,6 @@
+import styled, { css } from "styled-components";
+
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 export const NavigationHeader = styled.header`
   background-color: #0a142c;
@@ -125,7 +126,7 @@ export const NavigationSplitter = styled.div`
   margin: 5px 0;
 `;
 
-export const NavigationItem = styled(Link)`
+const NavigationItemCss = css`
   font-size: 24px;
   text-decoration: none;
   color: #fff;
@@ -135,6 +136,14 @@ export const NavigationItem = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
+`;
+
+export const NavigationItem = styled(Link)`
+  ${NavigationItemCss}
+`;
+
+export const NavigationRawItem = styled.a`
+  ${NavigationItemCss}
 `;
 
 export const SocialsItem = styled.a`
@@ -174,4 +183,4 @@ export const UserNameWrapper = styled.p`
   margin: auto auto 20px auto;
   font-size: 1.5rem;
   user-select: none;
-`
+`;
