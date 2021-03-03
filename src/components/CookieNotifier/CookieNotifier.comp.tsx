@@ -17,7 +17,7 @@ export const CookieNotifier: React.FC = () => {
 
   const acceptCookies = () => {
     // prettier-ignore
-    document.cookie = "accepted_cookies=true; expires=2021-03-09T22:40:02.000Z;";
+    document.cookie = "accepted_cookies=true; expires=2022-03-09T22:40:02.000Z;";
     setAcceptedCookie(true);
   };
 
