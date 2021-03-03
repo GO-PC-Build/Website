@@ -74,7 +74,9 @@ const App = () => (
       <Route
         exact
         path="/quiz"
-        render={() => (window.location.href = "http://www.quiz-maker.com/QMC5HZ3AN")}
+        render={() =>
+          (window.location.href = "http://www.quiz-maker.com/QMC5HZ3AN")
+        }
       />
       <Route
         exact
@@ -91,6 +93,7 @@ const App = () => (
         exact
         path="/logout"
         render={() => {
+          document.cookie = "accepted_cookies=; expires=;";
           document.cookie = "auth=; expires=;";
           return <Redirect to="/" />;
         }}

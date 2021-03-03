@@ -13,7 +13,9 @@ import React, { useState } from "react";
 import { getCookie } from "../../layouts/DefaultLayout";
 
 export const CookieNotifier: React.FC = () => {
-  const [acceptedCookie, setAcceptedCookie] = useState<boolean>(getCookie("accepted_cookies") === "true");
+  const [acceptedCookie, setAcceptedCookie] = useState<boolean>(
+    getCookie("accepted_cookies") === "true"
+  );
 
   const acceptCookies = () => {
     // prettier-ignore
@@ -37,6 +39,10 @@ export const CookieNotifier: React.FC = () => {
           <li>✔️ Of je dit hebt geaccepteerd</li>
           <li>❌ Cookies van andere websites</li>
         </CookieNotifierList>
+        <CookieNotifierDescription>
+          Wij respecteren de GDPR-wetgeving van Vlajo en het GO-Atheneum
+          oudenaarde.
+        </CookieNotifierDescription>
         <CookieNotifierAcceptWrapper>
           <CookieNotifierAccept onClick={acceptCookies}>
             Accepteren en doorgaan
