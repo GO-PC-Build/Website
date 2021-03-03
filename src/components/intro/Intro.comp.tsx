@@ -1,5 +1,6 @@
 import {
   Description,
+  IntroImage,
   IntroWrapper,
   Reserve,
   SideIcons,
@@ -17,16 +18,8 @@ export const Intro: React.FC = () => (
       bestuuringssysteem installeren.
     </Description>
     <SideIcons>
-      <img
-        style={{ width: 266, marginRight: 20, maxWidth: "80vw" }}
-        src="/static/stube.jpg"
-        alt=""
-      />
-      <img
-        style={{ width: 266, margin: "auto", maxWidth: "80vw" }}
-        src="/static/go-ao.png"
-        alt=""
-      />
+      <IntroImage src="/static/stube.jpg" alt="" style={{ marginRight: 20 }} />
+      <IntroImage src="/static/go-ao.png" alt="" style={{ margin: "auto" }} />
     </SideIcons>
     <Reserve to="/reserveer">Reserveer nu</Reserve>
   </IntroWrapper>

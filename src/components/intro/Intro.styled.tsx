@@ -97,3 +97,8 @@ export const SideIcons = styled.div`
     }
   }
 `;
+
+export const IntroImage = styled.img`
+  width: 266px;
+  max-width: 80vw;
+`
