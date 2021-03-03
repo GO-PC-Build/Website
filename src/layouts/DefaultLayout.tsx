@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
 import { Redirect } from "react-router";
 import axios from "axios";
+import { Suspense } from "react";
+import { TailSpin } from "@agney/react-loading";
 
 export interface DefaultLayoutProps {
   title?: string;
@@ -93,6 +95,36 @@ const loadingUser: GoAoUser = {
 
 export const AccountContext = createContext<GoAoUser>(loadingUser);
 
+const Loader: React.FC = () => {
+  const LoadingWrapper = styled.div`
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+
+    left: 0;
+    top: 0;
+
+    background-color: #0a142c;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const LoaderWrapper = styled.div`
+    max-width: 40vw;
+    width: 60px;
+  `;
+
+  return (
+    <LoadingWrapper>
+      <LoaderWrapper>
+        <TailSpin />
+      </LoaderWrapper>
+    </LoadingWrapper>
+  );
+};
+
 export const getCookie = (cname: string) => {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -155,31 +187,33 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   return proceedToLogin ? (
     <Redirect to="/login" />
   ) : (
-    <AccountContext.Provider value={account}>
-      <Helmet>
-        <title>GO-PC Build{props.title && ` | ${props.title}`}</title>
-      </Helmet>
-      <GlobalStyle />
-      <Navigation
-        isOpen={navIsOpen}
-        setOpen={setNavIsOpen}
-        setCovidIsOpen={setCovidIsOpen}
-      />
-      <Covid
-        setNav={setNavIsOpen}
-        isActive={covidIsOpen}
-        setIsActive={setCovidIsOpen}
-      />
-      <MainContent
-        onClick={() => {
-          setNavIsOpen(false);
-          setCovidIsOpen(false);
-        }}
-      >
-        {props.children}
-        <CookieNotifier />
-      </MainContent>
-      <Footer />
-    </AccountContext.Provider>
+    <Suspense fallback={<Loader />}>
+      <AccountContext.Provider value={account}>
+        <Helmet>
+          <title>GO-PC Build{props.title && ` | ${props.title}`}</title>
+        </Helmet>
+        <GlobalStyle />
+        <Navigation
+          isOpen={navIsOpen}
+          setOpen={setNavIsOpen}
+          setCovidIsOpen={setCovidIsOpen}
+        />
+        <Covid
+          setNav={setNavIsOpen}
+          isActive={covidIsOpen}
+          setIsActive={setCovidIsOpen}
+        />
+        <MainContent
+          onClick={() => {
+            setNavIsOpen(false);
+            setCovidIsOpen(false);
+          }}
+        >
+          {props.children}
+          <CookieNotifier />
+        </MainContent>
+        <Footer />
+      </AccountContext.Provider>
+    </Suspense>
   );
 };

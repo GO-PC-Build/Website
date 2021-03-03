@@ -1,9 +1,10 @@
 import App from "./App";
 import React from "react";
+import ReactDOM from "react-dom"
 import { Reset } from "styled-reset";
-import { render } from "react-snapshot";
+// import { render } from "react-snapshot";
 
-render(
+ReactDOM.render(
   <React.Fragment>
     <Reset />
     <App />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy } from "react";
 import {
   Redirect,
   Route,
@@ -8,9 +8,13 @@ import {
 } from "react-router-dom";
 
 import { DefaultLayout } from "./layouts/DefaultLayout";
-import IndexPage from "./pages";
-import ReservationPage from "./pages/reservation";
-import ReservePage from "./pages/reserve";
+// import IndexPage from "./pages";
+// import ReservationPage from "./pages/reservation";
+// import ReservePage from "./pages/reserve";
+
+const IndexPage = lazy(() => import("./pages/index"));
+const ReservationPage = lazy(() => import("./pages/reservation"));
+const ReservePage = lazy(() => import("./pages/reserve"));
 
 const Draaiboek = () => {
   useEffect(() => {
