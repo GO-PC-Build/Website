@@ -23,7 +23,7 @@ export const Footer: React.FC = () => (
   <FooterWrapper>
     <SocialsWrapper>
       {socials.map((item, index) => (
-        <SocialsIconWrapper key={index} href={item[1]}>
+        <SocialsIconWrapper key={index} href={item[1]} target="_blanc">
           <SocialsIcon src={item[2]} alt={item[0]} />
         </SocialsIconWrapper>
       ))}

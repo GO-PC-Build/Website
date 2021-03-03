@@ -220,9 +220,9 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
         <Title>Kies je plaats</Title>
         <Description>
           Je kan hier je plaats reserveren voor de workshops. <br />
-          31 maart: 1ste graad
+          31 maart: (1ste & 3de graad op school)
           <br />
-          21 april: 2de graad
+          21 april: (1ste & 2de graad op school)
           <br />
           12:30u - 14:00u
         </Description>

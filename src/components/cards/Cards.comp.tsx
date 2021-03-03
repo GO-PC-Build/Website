@@ -29,7 +29,7 @@ const data = [
   },
   {
     title: "Verbind\nSmartschool",
-    url: "/connect",
+    url: "/reserveer",
     description: "Reserveer gemakkenlijk je plek coronaproof online.",
     icon: SmartschoolIcon,
   },
