@@ -1,3 +1,9 @@
+import {
+  CookieNotifierSubTitle,
+  CookieNotifierTitle,
+  CookieNotifierWrapper,
+  WindowWrapper,
+} from "../components/CookieNotifier/CookieNotifier.styled";
 import { Description, Title } from "../components/intro/Intro.styled";
 import React, { useContext, useEffect, useState } from "react";
 
@@ -333,11 +339,85 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
         <WorkshopButton style={{ width: "100%" }} onClick={handleSubmit}>
           Reserveer nu
         </WorkshopButton>
-        <ReserveCodeText style={{ fontSize: "1.2rem" }}>
-          (Koop je code op school met epay)
-        </ReserveCodeText>
+        <ReserveCodeTextComponent />
       </ReserveWrapper>
     </BoardPanelWrapper>
+  );
+};
+
+const ReserveCodeTextComponent: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const IconWrapper = styled.div`
+    width: 1rem;
+    display: inline-block;
+
+    cursor: pointer;
+
+    opacity: 0.75;
+
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+      fill: #0a142c;
+    }
+  `;
+
+  const Refer = styled.code`
+    font-weight: bold;
+  `;
+
+  return (
+    <>
+      <ReserveCodeText style={{ fontSize: "1.2rem" }}>
+        (Koop je code op epay{" "}
+        <a href="https://www.go-atheneumoudenaarde.be/epay/public/shop/food/shop/357/18">
+          hier
+        </a>
+        &nbsp;
+        <IconWrapper title="Hulp nodig" onClick={() => setIsOpen(!isOpen)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1rem"
+            height="1rem"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1.25 17c0 .69-.559 1.25-1.25 1.25-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25zm1.393-9.998c-.608-.616-1.515-.955-2.551-.955-2.18 0-3.59 1.55-3.59 3.95h2.011c0-1.486.829-2.013 1.538-2.013.634 0 1.307.421 1.364 1.226.062.847-.39 1.277-.962 1.821-1.412 1.343-1.438 1.993-1.432 3.468h2.005c-.013-.664.03-1.203.935-2.178.677-.73 1.519-1.638 1.536-3.022.011-.924-.284-1.719-.854-2.297z" />
+          </svg>
+        </IconWrapper>
+        )
+      </ReserveCodeText>
+      {isOpen && (
+        <WindowWrapper onClick={() => setIsOpen(false)}>
+          <CookieNotifierWrapper style={{ maxWidth: "600px" }}>
+            <CookieNotifierTitle>Hoe krijg ik een code?</CookieNotifierTitle>
+            Ga naar je epay overzicht, klik dan op{" "}
+            <Refer>BESTEL ETEN OF PRODUCTEN UIT SHOP</Refer>.
+            <br />
+            Dan kan je bij de <Refer>Aankopen in een shop</Refer>{" "}
+            <Refer>GO-PC Build</Refer> selecteren.
+            <br /> Als je ons leerlingenbedrijf hebt geselecteerd klik je op{" "}
+            <Refer>GA SHOPPEN</Refer>.
+            <br />
+            Als je deze stappen hebt gevolgd kom je op de bestel pagina,
+            <br /> op deze pagina moet je de workshop selecteren en dit
+            reserveren
+            <CookieNotifierSubTitle>
+              Ik heb dit gedaan maar nog geen code ontvangen
+            </CookieNotifierSubTitle>
+            Wanneer wij een bestelling binnen krijgen sturen wij jou zo snel
+            mogenlijk een unieke geheime code via smartschool.
+            <CookieNotifierSubTitle>
+              Nog steeds vragen? Contacteer ons op{" "}
+              <a href="/discord" target="_blanc">
+                discord
+              </a>
+            </CookieNotifierSubTitle>
+          </CookieNotifierWrapper>
+        </WindowWrapper>
+      )}
+    </>
   );
 };
 

@@ -33,9 +33,9 @@ export const Covid: React.FC<CovidProps> = (props) => (
     <CovidMessage>
       Door de coronamaatregelen zijn er regels waaraan we ons moeten
       houden binnen het GO onderwijs: <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;31 maart: 1ste graad
+      &nbsp;&nbsp;&nbsp;&nbsp;31 maart: (1ste & 3de graad op school)
       <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;21 april: 2de graad
+      &nbsp;&nbsp;&nbsp;&nbsp;21 april: (1ste & 2de graad op school)
       <br />
       &nbsp;&nbsp;&nbsp;&nbsp;15 leerlingen per workshop
       <br />
