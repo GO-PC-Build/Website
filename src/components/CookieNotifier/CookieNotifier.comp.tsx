@@ -40,8 +40,8 @@ export const CookieNotifier: React.FC = () => {
           <li>❌ Cookies van andere websites</li>
         </CookieNotifierList>
         <CookieNotifierDescription>
-          Wij respecteren de GDPR-wetgeving van Vlajo en het GO-Atheneum
-          oudenaarde.
+          Wij respecteren de GDPR-wetgeving van Vlajo en het GO! atheneum
+          Oudenaarde.
         </CookieNotifierDescription>
         <CookieNotifierAcceptWrapper>
           <CookieNotifierAccept onClick={acceptCookies}>

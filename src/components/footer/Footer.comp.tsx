@@ -44,7 +44,7 @@ export const Footer: React.FC = () => (
     <FooterSplitter hide={true} />
     <CopyrightNote>
       ©2020-2021 GO-PC Build{"\n"}
-      Fortstraat 49, 9700 Oudenaarde
+      Fortstraat 47, 9700 Oudenaarde
     </CopyrightNote>
   </FooterWrapper>
 );
