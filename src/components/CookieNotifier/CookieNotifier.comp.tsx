@@ -20,7 +20,6 @@ export const CookieNotifier: React.FC = () => {
   const acceptCookies = () => {
     const date = new Date();
     date.setDate(date.getDate() + 365);
-    console.log(date.toUTCString())
     // prettier-ignore
     document.cookie = `accepted_cookies=true; expires=${date.toUTCString()};`;
     setAcceptedCookie(true);

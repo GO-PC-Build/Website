@@ -7,9 +7,9 @@ import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
 import { Redirect } from "react-router";
-import axios from "axios";
 import { Suspense } from "react";
 import { TailSpin } from "@agney/react-loading";
+import axios from "axios";
 
 export interface DefaultLayoutProps {
   title?: string;
@@ -95,7 +95,7 @@ const loadingUser: GoAoUser = {
 
 export const AccountContext = createContext<GoAoUser>(loadingUser);
 
-const Loader: React.FC = () => {
+export const Loader: React.FC = () => {
   const LoadingWrapper = styled.div`
     position: absolute;
     width: 100vw;

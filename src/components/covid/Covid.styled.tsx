@@ -63,7 +63,6 @@ export const CovidMessage = styled.p`
 
   grid-area: content;
   display: block;
-  max-height: 217px;
   overflow: hidden;
   width: calc(100vw - 47px - 27px);
 
