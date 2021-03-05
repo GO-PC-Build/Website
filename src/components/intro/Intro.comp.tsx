@@ -15,7 +15,7 @@ export const Intro: React.FC = () => (
     <div />
     <Description>
       Leer bij ons professioneel een pc bouwen. Van het samenstellen tot het
-      bestuuringssysteem installeren.
+      besturingssysteem installeren.
     </Description>
     <SideIcons>
       <IntroImage src="/static/stube.jpg" alt="" style={{ marginRight: 20 }} />
