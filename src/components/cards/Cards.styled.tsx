@@ -1,5 +1,6 @@
+import styled, { css } from "styled-components";
+
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 export const CardsWrapper = styled.section`
   position: relative;
@@ -23,7 +24,7 @@ export const CardsWrapper = styled.section`
   }
 `;
 
-export const CardWrapper = styled(Link)`
+const CardCss = css`
   position: relative;
   display: block;
 
@@ -35,6 +36,14 @@ export const CardWrapper = styled(Link)`
   @media (min-width: 1024px) {
     max-width: 318px;
   }
+`;
+
+export const InternalCardWrapper = styled(Link)`
+  ${CardCss}
+`;
+
+export const CardWrapper = styled.a`
+  ${CardCss}
 `;
 
 export const CardIcon = styled.img<{ odd: boolean }>`
