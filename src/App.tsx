@@ -98,7 +98,7 @@ const App = () => (
       <CustomRedirect
         path="/quiz"
         title="Quiz"
-        redirect="http://www.quiz-maker.com/QMC5HZ3AN"
+        redirect="https://docs.google.com/forms/d/e/1FAIpQLSdVXqprKxwSRa2nz0gpJOhmr7gHpv4YUI8OMWqCDf-zI9RsNQ/viewform?usp=sf_link"
       />
       <CustomRoute
         exact
