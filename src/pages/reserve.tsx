@@ -372,7 +372,7 @@ const ReserveCodeTextComponent: React.FC = () => {
     <>
       <ReserveCodeText style={{ fontSize: "1.2rem" }}>
         (Koop je code op epay{" "}
-        <a href="https://www.go-atheneumoudenaarde.be/epay/public/shop/food/shop/357/18">
+        <a href="http://epay.go-ao.be" target="_blanc">
           hier
         </a>
         &nbsp;
