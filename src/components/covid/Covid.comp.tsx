@@ -7,7 +7,6 @@ import {
   CovidWrapper,
 } from "./Covid.styled";
 
-import { Link } from "react-router-dom";
 import React from "react";
 import VirusIcon from "../../assets/virus.svg";
 
@@ -44,7 +43,7 @@ export const Covid: React.FC<CovidProps> = (props) => (
       &nbsp;&nbsp;&nbsp;&nbsp;eten kan nog buiten van 12:00u - 12:30u
       <br />
       <br />
-      Je kan ons draaiboek op <Link to="/draaiboek">gpb.go-ao.be/draaiboek</Link> vinden.
+      Je kan ons draaiboek op <a href="/draaiboek" target="_blanc">gpb.go-ao.be/draaiboek</a> vinden.
     </CovidMessage>
   </CovidWrapper>
 );

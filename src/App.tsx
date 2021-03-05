@@ -19,12 +19,12 @@ const IndexPage = lazy(() => import("./pages/index"));
 const ReservationPage = lazy(() => import("./pages/reservation"));
 const ReservePage = lazy(() => import("./pages/reserve"));
 
-const Draaiboek = () => {
+const UrlThatRequiresReload: React.FC<{redirect: string}>  = (props) => {
   useEffect(() => {
     window.location.reload();
   }, []);
 
-  return <Redirect to="/static/draaiboek.pdf" />;
+  return <Redirect to={props.redirect} />;
 };
 
 const SignIn: React.FC = () => {
@@ -121,7 +121,7 @@ const App = () => (
         exact
         path="/draaiboek"
         title="Draaiboek"
-        content={() => <Draaiboek />}
+        content={() => <UrlThatRequiresReload redirect="/static/draaiboek.pdf" />}
       />
       <CustomRoute
         exact
@@ -130,7 +130,7 @@ const App = () => (
         content={() => {
           document.cookie = "accepted_cookies=; expires=;";
           document.cookie = "auth=; expires=;";
-          return <Redirect to="/" />;
+          return <UrlThatRequiresReload redirect="/" />;
         }}
       />
       <Redirect to="/" />
