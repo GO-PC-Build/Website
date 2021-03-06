@@ -8,7 +8,6 @@ import { Description, Title } from "../components/intro/Intro.styled";
 import React, { useContext, useEffect, useState } from "react";
 
 import { AccountContext } from "../layouts/DefaultLayout";
-import { Redirect } from "react-router";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -207,7 +206,7 @@ export const ReservePage: React.FC = () => {
   }, [internalnr]);
 
   return reserved ? (
-    <Redirect to="/reservatie" />
+    <>{(window.location.href = "/reservatie")}</>
   ) : (
     <ReservePageContent data={data} />
   );
@@ -261,6 +260,7 @@ const notes = {
   noLocation: "Je hebt nog geen locatie geselecteerd!",
   noCode: "Je hebt nog geen code ingegeven!",
   invalidCode: "Code is ongeldig of is al gebruikt!",
+  notLoggedIn: "Je moet je eerst aanmelden om te kunnen reserveren."
 };
 
 interface BoardProps {
@@ -287,7 +287,9 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
     setNote("");
 
   const handleSubmit = () => {
+    
     if (props.selected === undefined) setNote(notes.noLocation);
+    else if (ctx.internalnr === 0) setNote(notes.notLoggedIn)
     else if (!code) setNote(notes.noCode);
     else {
       const sendRequest = async () => {
@@ -318,7 +320,7 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
   };
 
   return reserved ? (
-    <Redirect to="/reservatie" />
+    <>{(window.location.href = "/reservatie")}</>
   ) : (
     <BoardPanelWrapper>
       <Board

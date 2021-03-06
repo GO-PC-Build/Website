@@ -6,7 +6,6 @@ import { Covid } from "../components/covid/Covid.comp";
 import { Footer } from "../components/footer/Footer.comp";
 import { Helmet } from "react-helmet";
 import { Navigation } from "../components/navigation/Navigation.comp";
-import { Redirect } from "react-router";
 import { Suspense } from "react";
 import { TailSpin } from "@agney/react-loading";
 import axios from "axios";
@@ -185,7 +184,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   });
 
   return proceedToLogin ? (
-    <Redirect to="/login" />
+    <>{(window.location.href = "/login")}</>
   ) : (
     <Suspense fallback={<Loader />}>
       <AccountContext.Provider value={account}>
