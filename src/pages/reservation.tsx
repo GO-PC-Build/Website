@@ -58,7 +58,7 @@ export const ReservationPage: React.FC = () => {
           textAlign: "center",
         }}
       >
-        {data.workshop === 0 ? "24 maart" : "31 maart"}
+        {data.workshop === 0 ? "31 maart" : "21 april"}
       </Description>
       <Board
         data={data.board}
