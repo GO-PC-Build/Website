@@ -183,18 +183,19 @@ export const ReservePage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (internalnr === 0) return;
-
       const urlBase =
         process.env.NODE_ENV === "development"
           ? "http://localhost:25578"
           : "https://api.arthurdw.com/go-pc-build";
 
-      const user = await axios.get(`${urlBase}/user/id/${internalnr}`);
+      if (internalnr !== 0) {
 
-      if (user.data.exists) {
-        setReserved(true);
-        return;
+        const user = await axios.get(`${urlBase}/user/id/${internalnr}`);
+
+        if (user.data.exists) {
+          setReserved(true);
+          return;
+        }
       }
 
       const schemes = await axios.get(`${urlBase}/schemes`);
@@ -260,7 +261,7 @@ const notes = {
   noLocation: "Je hebt nog geen locatie geselecteerd!",
   noCode: "Je hebt nog geen code ingegeven!",
   invalidCode: "Code is ongeldig of is al gebruikt!",
-  notLoggedIn: "Je moet je eerst aanmelden om te kunnen reserveren."
+  notLoggedIn: "Je moet je eerst aanmelden om te kunnen reserveren.",
 };
 
 interface BoardProps {
@@ -287,9 +288,8 @@ const FullBoard: React.FC<FullBoardProps> = (props) => {
     setNote("");
 
   const handleSubmit = () => {
-    
     if (props.selected === undefined) setNote(notes.noLocation);
-    else if (ctx.internalnr === 0) setNote(notes.notLoggedIn)
+    else if (ctx.internalnr === 0) setNote(notes.notLoggedIn);
     else if (!code) setNote(notes.noCode);
     else {
       const sendRequest = async () => {
