@@ -425,7 +425,7 @@ const ReserveCodeTextComponent: React.FC = () => {
 
 export const Board: React.FC<BoardProps> = (props) => (
   <Centerer>
-    <BoardTitle>Voorkant lokaal F-L003</BoardTitle>
+    <BoardTitle>Voorkant lokaal F-L103</BoardTitle>
     <BoardWrapper>
       {[...Array(15)].map((_, i) => (
         <Square
