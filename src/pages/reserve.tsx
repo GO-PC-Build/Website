@@ -348,7 +348,7 @@ export const ReservePage: React.FC = () => {
   //     </ReserveWrapper>
   //   </BoardPanelWrapper>
   // );
-};
+// };
 
 // const ReserveCodeTextComponent: React.FC = () => {
 //   const [isOpen, setIsOpen] = useState(false);
