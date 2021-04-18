@@ -70,8 +70,7 @@ export const ReservationPage: React.FC = () => {
     //   />
     // </React.Fragment>
     <Title>
-      Door gewijzigde Corona maatregelen zijn de huidige workshop datums
-      onbekend. We houden jullie op de hoogte via onze smartschool.
+      Reservaties gaan live op 14/04/2021 om 14:00u
     </Title>
   );
 };
