@@ -25,10 +25,6 @@ export const IntroWrapper = styled.section`
 `;
 
 export const Title = styled.h1`
-  // TODO: Remove the next two lines on release!
-  width: fit-content;
-  margin: 25vh auto;
-
   display: block;
   white-space: pre-wrap;
 

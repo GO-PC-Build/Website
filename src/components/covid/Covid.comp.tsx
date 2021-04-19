@@ -30,19 +30,19 @@ export const Covid: React.FC<CovidProps> = (props) => (
     </CovidPeekWrapper>
     <CovidSplitter />
     <CovidMessage>
-      {/* Door de coronamaatregelen zijn er regels waaraan we ons moeten
-      houden binnen het GO onderwijs: <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;31 maart: (1ste & 3de graad op school)
+      Door de coronamaatregelen zijn er regels waaraan we ons moeten houden
+      binnen het GO onderwijs: <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;Workshop 1: 28 april 
       <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;21 april: (1ste & 2de graad op school)
+      &nbsp;&nbsp;&nbsp;&nbsp;Workshop 2: 5 mei
       <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;15 leerlingen per workshop
+      &nbsp;&nbsp;&nbsp;&nbsp;Workshop 3: 12 mei
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;10 leerlingen per workshop
       <br />
       &nbsp;&nbsp;&nbsp;&nbsp;12:30u - 14:00u
       <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;eten kan nog buiten van 12:00u - 12:30u */}
-      Door gewijzigde Corona maatregelen zijn de huidige workshop datums
-      onbekend. We houden jullie op de hoogte via onze smartschool.
+      &nbsp;&nbsp;&nbsp;&nbsp;eten kan nog buiten van 12:00u - 12:30u
       <br />
       <br />
       Je kan ons draaiboek op{" "}
