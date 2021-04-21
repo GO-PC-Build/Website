@@ -35,7 +35,7 @@ const WorkshopButton = styled.button`
   background-color: #4a85b9;
   width: 45%;
   font-size: 1.5rem;
-  margin: 10px;
+  margin: 0 10px;
   cursor: pointer;
   transition: opacity 0.25s ease-in-out;
   outline: none;
