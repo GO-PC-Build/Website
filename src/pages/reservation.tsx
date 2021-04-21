@@ -2,7 +2,7 @@ import { Description, Title } from "../components/intro/Intro.styled";
 import React, { useContext, useEffect, useState } from "react";
 
 import { AccountContext } from "../layouts/DefaultLayout";
-// import { Board } from "./reserve";
+import { Board } from "./reserve";
 import axios from "axios";
 
 interface Data {
@@ -60,11 +60,11 @@ export const ReservationPage: React.FC = () => {
       >
         {["28 april", "5 mei", "12 mei"][data.workshop]}
       </Description>
-      {/* <Board
+      <Board
         data={data.board}
         selected={data.location}
         setSelected={() => {}}
-      /> */}
+      />
     </React.Fragment>
   );
 };

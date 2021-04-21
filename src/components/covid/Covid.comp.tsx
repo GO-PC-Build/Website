@@ -30,7 +30,7 @@ export const Covid: React.FC<CovidProps> = (props) => (
     </CovidPeekWrapper>
     <CovidSplitter />
     <CovidMessage>
-      {/* Door de coronamaatregelen zijn er regels waaraan we ons moeten houden
+      Door de coronamaatregelen zijn er regels waaraan we ons moeten houden
       binnen het GO onderwijs: <br />
       &nbsp;&nbsp;&nbsp;&nbsp;Workshop 1: 28 april 
       <br />
@@ -44,7 +44,7 @@ export const Covid: React.FC<CovidProps> = (props) => (
       <br />
       &nbsp;&nbsp;&nbsp;&nbsp;eten kan nog buiten van 12:00u - 12:30u
       <br />
-      <br /> */}
+      <br />
       Je kan ons draaiboek op{" "}
       <a href="/draaiboek" target="_blanc">
         gpb.go-ao.be/draaiboek
