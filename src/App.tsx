@@ -105,7 +105,7 @@ const App = () => (
         path="/login"
         title="Login"
         content={() =>
-          (window.location.href = `https://www.go-atheneumoudenaarde.be/dashboard/QAuthLogin.php?app=${
+          (window.location.href = `https://www.go-atheneumoudenaarde.be/dashboard/oAuthLogin.php?app=${
             process.env.NODE_ENV === "development" ? "test" : "gpb"
           }`)
         }
@@ -113,7 +113,7 @@ const App = () => (
       />
       <CustomRoute
         exact
-        path="/sign/:leerlingId"
+        path="/sign"
         title="Login"
         content={() => <SignIn />}
       />

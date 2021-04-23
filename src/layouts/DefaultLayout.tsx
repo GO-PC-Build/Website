@@ -150,25 +150,25 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         return;
       };
 
-      const session = getCookie("auth");
-      if (!props.requiresLogin && session === "") return;
-      else if (props.requiresLogin && session === "") login();
+      const code = getCookie("auth");
+      if (!props.requiresLogin && code === "") return;
+      else if (props.requiresLogin && code === "") login();
 
       const development = process.env.NODE_ENV === "development";
       const req = await axios.post(
-        "https://www.go-atheneumoudenaarde.be/dashboard/OAuthGetJson.php",
+        "https://www.go-atheneumoudenaarde.be/dashboard/oAuthGetUserInfo.php",
         {
           app: development ? "test" : "gpb",
-          session,
+          session: code,
         }
       );
 
       if (req.data.length !== 0) {
         const user: GoAoUser = {
           internalnr: req.data?.internalnr,
-          firstname: req.data?.firstname,
-          lastname: req.data?.lastname,
-          class: req.data.groepen?.[0].name,
+          firstname: req.data?.voornaam,
+          lastname: req.data?.naam,
+          class: req.data?.klas,
         };
 
         setAccount(user);
