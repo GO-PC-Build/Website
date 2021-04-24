@@ -159,7 +159,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
         "https://www.go-atheneumoudenaarde.be/dashboard/oAuthGetUserInfo.php",
         {
           app: development ? "test" : "gpb",
-          session: code,
+          code,
         }
       );
 
