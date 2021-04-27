@@ -254,12 +254,18 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
           </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>
+      {[0].includes(workshop) ? <div style={{
+        textAlign: "center",
+        padding: "15vh"
+      }}>
+      <Title>Reservaties voor deze dag zijn gesloten</Title>
+      </div> :
       <FullBoard
         data={props.data[workshop]}
         selected={selected}
         setSelected={setSelected}
         workshop={workshop}
-      />
+      />}
     </React.Fragment>
   );
 };
