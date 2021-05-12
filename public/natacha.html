@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Tacha'sPlace</title>
+		<style>
+			html {
+				background-color: Tomato;
+				color: Lime;	
+				height: 100vh;					
+			}
+			body{
+				height:100%;	
+				display:flex;
+				flex-direction: column;
+				justify-content: space-between;				
+			}
+			@keyframes animatie{
+				10%{
+					transform:rotate(45deg);
+				}	
+				80%{
+					transform:rotate(70deg);
+				}			
+			}
+			img{
+				
+				border: 3px solid Cornflowerblue;
+				padding: 10px;
+				margin-right: 40px;
+				text-align: middle;
+				animation: animatie 5s linear infinite;
+			}
+			div{
+				display: grid; 
+				grid-template-columns: 1fr 1fr;
+
+			}
+		</style>
+
+	</head>
+	<body>
+		<h1>Welkom T'Oezent</H1>
+		<div>			
+			<img src="doge.png" width="150px"/>
+			<h2>De koffie staat altijd klaar staat en een superlieve hond wacht</h2>
+		</div>
+		<footer><a href="mailto:natacha.bauwens@go-atheneumoudenaarde">Wanna Come? Love dogs? Send me a mail! </a></footer>
+		
+	</body>
+</html>
