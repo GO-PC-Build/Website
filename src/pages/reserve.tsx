@@ -254,7 +254,7 @@ const ReservePageContent: React.FC<{ data: number[][] }> = (props) => {
           </WorkshopButton>
         </ButtonsWrapper>
       </Wrapper>
-      {[0, 1].includes(workshop) ? <div style={{
+      {[0, 1, 2].includes(workshop) ? <div style={{
         textAlign: "center",
         padding: "15vh"
       }}>
